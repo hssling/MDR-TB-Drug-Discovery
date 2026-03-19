@@ -68,6 +68,16 @@ def run_pipeline():
         traceback.print_exc()
         who_df = None
 
+    # CRyPTIC Genomic Atlas
+    try:
+        from data_connectors.cryptic_loader import CrypticLoader
+        cryptic = CrypticLoader(config)
+        cryptic_res = cryptic.run()
+        results["cryptic"] = cryptic_res
+    except Exception as e:
+        errors.append(f"CRyPTIC: {e}")
+        traceback.print_exc()
+
     # DrugBank
     try:
         from data_connectors.drugbank_loader import DrugBankLoader
@@ -169,18 +179,31 @@ def run_pipeline():
         traceback.print_exc()
         compounds_processed = None
 
-    # ── PHASE 5b: ESMFOLD STRUCTURAL PREDICTION ───────────────
-    log_phase("ESMFOLD PREDICTOR")
+    # ── PHASE 5b: ALPHAFOLD / ESMFOLD STRUCTURAL PREDICTION ───
+    log_phase("ALPHAFOLD / ESMFOLD PREDICTOR")
     try:
         from models.structural_predictor import ESMFoldPredictor
+        from engines.alphafold_engine import AlphaFoldEngine
+        
+        af = AlphaFoldEngine(config)
         esm = ESMFoldPredictor(config)
+        
         top_target = "DprE1"
         if target_results and "scored_targets" in target_results:
             top_target = target_results["scored_targets"].iloc[0]["Target"][:5]
-        # Request uncharacterized PDB scaffold prediction
-        predicted_pdb_path = esm.run(top_target)
+            
+        print(f"  [Orchestrator] Requesting structural scaffold for priority target: {top_target}")
+        
+        # Primary Hook: DeepMind AlphaFold EBI Database
+        predicted_pdb_path = af.run(top_target)
+        
+        # Fallback Hook: Meta ESMFold Sequence Predictor
+        if not predicted_pdb_path:
+             print("  [Orchestrator] ⚠ AlphaFold structural query missed. Cascading to ESMFold inference...")
+             predicted_pdb_path = esm.run(top_target)
+             
     except Exception as e:
-        errors.append(f"ESMFold: {e}")
+        errors.append(f"StructuralPredictors: {e}")
         traceback.print_exc()
 
     # ── PHASE 5c: DOCKING ENGINE ────────────────────────────
@@ -286,7 +309,7 @@ def run_pipeline():
     print("  PIPELINE COMPLETE")
     print("=" * 70)
     print(f"  ⏱ Total time: {elapsed:.1f} seconds")
-    print(f"  ✓ Phases completed: {13 - len(errors)}/13")
+    print(f"  ✓ Phases completed: {14 - len(errors)}/14")
     if errors:
         print(f"  ⚠ Errors ({len(errors)}):")
         for err in errors:
@@ -296,7 +319,7 @@ def run_pipeline():
 
     print("\n  📁 Output directories:")
     output_base = Path(config["paths"]["output_dir"])
-    for subdir in ["omics", "epi", "targets", "de_novo", "compounds", "structures", "docking", "models",
+    for subdir in ["omics", "epi", "targets", "cryptic_data", "de_novo", "compounds", "structures", "alphafold_structures", "docking", "models",
                     "resistance", "ranking", "manuscript", "icmr", "iec"]:
         d = output_base / subdir
         if d.exists():
@@ -306,8 +329,8 @@ def run_pipeline():
     # Save pipeline report
     report = {
         "elapsed_seconds": round(elapsed, 1),
-        "phases_completed": 13 - len(errors),
-        "phases_total": 13,
+        "phases_completed": 14 - len(errors),
+        "phases_total": 14,
         "errors": errors,
         "status": "SUCCESS" if not errors else "PARTIAL",
     }
