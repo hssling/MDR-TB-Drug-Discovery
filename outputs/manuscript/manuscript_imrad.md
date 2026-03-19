@@ -36,6 +36,10 @@ However, many computational reports overstate what their outputs demonstrate. Do
 
 The aim of the present study was to assemble, audit, and report an end-to-end computational discovery workflow for MDR-TB that remains tightly grounded in exported outputs. The pipeline integrates disease-context modules, resistance-informed target prioritization, compound generation, docking, machine-learning support, and post-docking triage. The resulting manuscript is intended to document a reproducible *in silico* lead-nomination process rather than to claim biological validation.
 
+![Figure 1. Computational workflow for MDR-TB lead prioritization](../figures/figure_1_workflow.png)
+
+*Figure 1. Computational workflow linking data ingestion, target prioritization, de novo generation, docking, post-docking triage, retrosynthesis, and manuscript generation.*
+
 ---
 
 ## 2. Materials and Methods
@@ -96,11 +100,19 @@ The omics module identified 426 significant differential-expression events acros
 
 The epidemiology summary contextualized these results within a region-level trend analysis covering 2015-2023. The overall incidence trend was reported as decreasing, whereas the MDR-TB trend was rising. Rajasthan emerged as the highest-burden region in the current run, and the mean MDR-TB proportion across the analyzed regional set was 8.75%. Although these values are not used as causal inputs to compound-level scoring, they reinforce the rationale for emphasizing resistance-aware discovery.
 
+![Figure 2. Regional MDR-TB burden patterns](../figures/figure_3_mdr_patterns.png)
+
+*Figure 2. Regional MDR-TB burden patterns derived from the epidemiology module, showing latest MDR-TB percentage across analyzed regions.*
+
 ### 3.2 Resistance scoring and target prioritization
 
 The resistance module covered 10 genes, 40 cataloged mutations, and 10 drugs, with an average resistance score of 0.5085. The highest-scoring resistance-associated genes were `rpoB` (Rifampicin, 0.635), `katG` (Isoniazid, 0.620), `rrs` (Aminoglycosides, 0.575), `gyrA` (Fluoroquinolones, 0.565), and `inhA` (Isoniazid low-level resistance, 0.525). These findings are consistent with the central role of canonical MDR-associated loci in determining treatment constraints.
 
 Target prioritization identified InhA as the top-ranked target with final score 0.8695. Other highly ranked targets included RpoB, GyrA, EmbB, and Rrs. The top target list is shown in Table 1.
+
+![Figure 3. Top-ranked TB drug targets](../figures/figure_2_target_ranking.png)
+
+*Figure 3. Horizontal ranking of the top prioritized TB drug targets based on the exported multi-factor scoring table.*
 
 **Table 1. Top-ranked targets in the current run**
 
@@ -119,6 +131,14 @@ The emergence of InhA as the leading target is noteworthy because it aligns a bi
 The ranking engine evaluated 55 compounds. The top-ranked compound was `MDR_AI_030` with a final ranking score of 0.736. Although the summary file reported zero compounds in a strict `n_high_priority` bucket, the ranked table still identified multiple compounds as `Promising`, with `MDR_AI_030` ranked first.
 
 Docking results against InhA showed a leading cluster of compounds with substantially stronger predicted affinities than the repeated -4.0 kcal/mol plateau seen among many lower-ranked compounds. The top 10 docked compounds are shown in Table 2.
+
+![Figure 4. Top enriched pathways in the omics module](../figures/figure_4_pathways.png)
+
+*Figure 4. Top enriched pathways from the omics module, highlighting glycolysis and related metabolic processes in the current computational run.*
+
+![Figure 5. Top docking hits against InhA](../figures/figure_5_docking_hits.png)
+
+*Figure 5. Top docking hits against InhA ranked by predicted binding affinity.*
 
 **Table 2. Top docking results against InhA**
 
@@ -149,6 +169,10 @@ Quantum-chemical analysis estimated HOMO and LUMO energies of -5.5 eV and -2.6 e
 
 Retrosynthesis identified a one-step Sonogashira cross-coupling route using the fragments `Brc1ccccc1` and `C#Cc1cc(C#CC(F)(F)F)cc(C(F)(F)F)c1`. This route proposal is valuable because it gives the nominated lead a plausible synthetic entry point rather than leaving it as an entirely abstract structure.
 
+![Figure 6. Top valid de novo molecular structures](../figures/figure_6_top_structures.png)
+
+*Figure 6. Two-dimensional molecular structure renderings for selected top valid de novo compounds identified in the ranking workflow (`MDR_AI_030`, `MDR_AI_039`, `MDR_AI_047`, `MDR_AI_005`, `MDR_AI_026`, and `MDR_AI_042`).*
+
 **Table 3. Integrated post-docking profile of `MDR_AI_030`**
 
 | Module | Output | Interpretation |
@@ -163,6 +187,10 @@ Retrosynthesis identified a one-step Sonogashira cross-coupling route using the 
 ### 3.5 Machine-learning performance
 
 Machine-learning performance was modest but adequate for prioritization support. The best model was the random forest with ROC-AUC 0.7273, accuracy 0.650, precision 0.600, recall 0.667, and F1-score 0.632. Gradient boosting showed intermediate performance, while logistic regression performed substantially worse on the current task.
+
+![Figure 7. Integrated computational profile of MDR_AI_030](../figures/figure_7_lead_profile.png)
+
+*Figure 7. Scaled summary profile for `MDR_AI_030`, integrating QED, off-target selectivity, MD stability proxy, persistent hydrogen bonding, and quantum band-gap descriptors.*
 
 **Table 4. Model performance summary**
 

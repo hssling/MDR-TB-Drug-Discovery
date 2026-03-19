@@ -14,7 +14,6 @@ EXCLUDED_DIRS = {
     ".ruff_cache",
     ".venv",
     "venv",
-    "release_bundle",
 }
 
 EXCLUDED_FILES = {
@@ -33,7 +32,7 @@ def should_exclude(path: Path, root: Path, output_dir: Path) -> bool:
     if path == output_dir or output_dir in path.parents:
         return True
     relative = path.relative_to(root)
-    if any(part in EXCLUDED_DIRS for part in relative.parts):
+    if any(part in EXCLUDED_DIRS or part.startswith("release_bundle") for part in relative.parts):
         return True
     if path.name in EXCLUDED_FILES:
         return True

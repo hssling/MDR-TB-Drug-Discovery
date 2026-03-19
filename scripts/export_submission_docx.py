@@ -1,11 +1,12 @@
 from __future__ import annotations
 
 import argparse
+import re
 from pathlib import Path
 
 from docx import Document
 from docx.enum.text import WD_ALIGN_PARAGRAPH
-from docx.shared import Pt
+from docx.shared import Inches, Pt
 
 
 AUTHOR_NAME = "Dr Siddalingaiah H S"
@@ -45,6 +46,23 @@ def add_table_from_markdown(document: Document, lines: list[str]) -> None:
             cells[index].text = value
 
 
+def add_markdown_image(document: Document, line: str, root: Path) -> bool:
+    match = re.match(r"!\[(.*?)\]\((.*?)\)", line.strip())
+    if not match:
+        return False
+    caption, image_path = match.groups()
+    image_file = (root / image_path).resolve()
+    if not image_file.exists():
+        return False
+    paragraph = document.add_paragraph()
+    paragraph.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    paragraph.add_run().add_picture(str(image_file), width=Inches(6.2))
+    if caption:
+        cap = document.add_paragraph(strip_markdown(caption))
+        cap.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    return True
+
+
 def markdown_to_docx(source: Path, target: Path, title: str) -> None:
     document = Document()
     style = document.styles["Normal"]
@@ -79,6 +97,9 @@ def markdown_to_docx(source: Path, target: Path, title: str) -> None:
             continue
 
         flush_table()
+
+        if add_markdown_image(document, stripped, source.parent):
+            continue
 
         if stripped.startswith("# "):
             paragraph = document.add_paragraph()
