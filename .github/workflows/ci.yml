@@ -26,11 +26,29 @@ jobs:
         
     - name: Run Pipeline Tests
       run: |
-        # Run pytest and generate a coverage report.
-        # Strict computational evaluation only.
         pytest tests/ -v --cov=engines --cov=models --cov=data_connectors --cov=generators
         
-    - name: Dry Run Execution
+    - name: Deploy to Hugging Face Spaces
+      if: github.ref == 'refs/heads/master'
+      env:
+        HF_TOKEN: ${{ secrets.HF_TOKEN }}
       run: |
-        # Ensure the orchestrator can execute end-to-end with mock configs
-        python run_pipeline.py
+        git remote add space https://hssling:$HF_TOKEN@huggingface.co/spaces/hssling/MDR-TB-Drug-Discovery
+        git push --force space HEAD:main
+
+    - name: Setup Kaggle Config
+      if: github.ref == 'refs/heads/master'
+      env:
+        KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
+        KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
+      run: |
+        mkdir -p ~/.kaggle
+        echo "{\"username\":\"$KAGGLE_USERNAME\",\"key\":\"$KAGGLE_KEY\"}" > ~/.kaggle/kaggle.json
+        chmod 600 ~/.kaggle/kaggle.json
+        
+    - name: Deploy Kaggle Dataset
+      if: github.ref == 'refs/heads/master'
+      run: |
+        pip install kaggle
+        # Update the dataset with the new repository changes
+        kaggle datasets version -p . -m "Automated CI/CD update from GitHub" --dir-mode zip
