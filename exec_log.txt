@@ -1,0 +1,346 @@
+[22:57:10] SMILES Parse Error: syntax error while parsing: N(C)C-CH2CH2-C1C(O)C(O)C(O)C(O)C1-CH2CH2-C(F)(F)F
+[22:57:10] SMILES Parse Error: check for mistakes around position 8:
+[22:57:10] N(C)C-CH2CH2-C1C(O)C(O)C(O)C(O)C1-CH2CH2-
+[22:57:10] ~~~~~~~^
+[22:57:10] SMILES Parse Error: Failed parsing SMILES 'N(C)C-CH2CH2-C1C(O)C(O)C(O)C(O)C1-CH2CH2-C(F)(F)F' for input: 'N(C)C-CH2CH2-C1C(O)C(O)C(O)C(O)C1-CH2CH2-C(F)(F)F'
+[22:57:10] SMILES Parse Error: syntax error while parsing: N(C)C-NH-c1cc(cnc1)C(=O)N-NH-N(C)C
+[22:57:10] SMILES Parse Error: check for mistakes around position 8:
+[22:57:10] N(C)C-NH-c1cc(cnc1)C(=O)N-NH-N(C)C
+[22:57:10] ~~~~~~~^
+[22:57:10] SMILES Parse Error: Failed parsing SMILES 'N(C)C-NH-c1cc(cnc1)C(=O)N-NH-N(C)C' for input: 'N(C)C-NH-c1cc(cnc1)C(=O)N-NH-N(C)C'
+[22:57:10] SMILES Parse Error: syntax error while parsing: C#N-NH-C1C(O)C(O)C(O)C(O)C1-NH-C(F)(F)F
+[22:57:10] SMILES Parse Error: check for mistakes around position 6:
+[22:57:10] C#N-NH-C1C(O)C(O)C(O)C(O)C1-NH-C(F)(F)F
+[22:57:10] ~~~~~^
+[22:57:10] SMILES Parse Error: Failed parsing SMILES 'C#N-NH-C1C(O)C(O)C(O)C(O)C1-NH-C(F)(F)F' for input: 'C#N-NH-C1C(O)C(O)C(O)C(O)C1-NH-C(F)(F)F'
+[22:57:10] Explicit valence for atom # 1 N, 4, is greater than permitted
+[22:57:10] SMILES Parse Error: syntax error while parsing: OC-C(=O)NH-c1cc(cnc1)C(=O)N-C(=O)NH-C#N
+[22:57:10] SMILES Parse Error: check for mistakes around position 10:
+[22:57:10] OC-C(=O)NH-c1cc(cnc1)C(=O)N-C(=O)NH-C#N
+[22:57:10] ~~~~~~~~~^
+[22:57:10] SMILES Parse Error: Failed parsing SMILES 'OC-C(=O)NH-c1cc(cnc1)C(=O)N-C(=O)NH-C#N' for input: 'OC-C(=O)NH-c1cc(cnc1)C(=O)N-C(=O)NH-C#N'
+[22:57:10] SMILES Parse Error: syntax error while parsing: OC-C(=O)NH-c1nc2c(n1)c(nc(n2)N)N-C(=O)NH-c1ccccc1
+[22:57:10] SMILES Parse Error: check for mistakes around position 10:
+[22:57:10] OC-C(=O)NH-c1nc2c(n1)c(nc(n2)N)N-C(=O)NH-
+[22:57:10] ~~~~~~~~~^
+[22:57:10] SMILES Parse Error: Failed parsing SMILES 'OC-C(=O)NH-c1nc2c(n1)c(nc(n2)N)N-C(=O)NH-c1ccccc1' for input: 'OC-C(=O)NH-c1nc2c(n1)c(nc(n2)N)N-C(=O)NH-c1ccccc1'
+[22:57:10] SMILES Parse Error: syntax error while parsing: c1ccccc1-CH2CH2-c1nc2c(n1)c(nc(n2)N)N-CH2CH2-C1CCCCC1
+[22:57:10] SMILES Parse Error: check for mistakes around position 11:
+[22:57:10] c1ccccc1-CH2CH2-c1nc2c(n1)c(nc(n2)N)N-CH2
+[22:57:10] ~~~~~~~~~~^
+[22:57:10] SMILES Parse Error: Failed parsing SMILES 'c1ccccc1-CH2CH2-c1nc2c(n1)c(nc(n2)N)N-CH2CH2-C1CCCCC1' for input: 'c1ccccc1-CH2CH2-c1nc2c(n1)c(nc(n2)N)N-CH2CH2-C1CCCCC1'
+[22:57:10] SMILES Parse Error: syntax error while parsing: N(C)C-CH2CH2-C1C(O)C(O)C(O)C(O)C1-CH2CH2-C#N
+[22:57:10] SMILES Parse Error: check for mistakes around position 8:
+[22:57:10] N(C)C-CH2CH2-C1C(O)C(O)C(O)C(O)C1-CH2CH2-
+[22:57:10] ~~~~~~~^
+[22:57:10] SMILES Parse Error: Failed parsing SMILES 'N(C)C-CH2CH2-C1C(O)C(O)C(O)C(O)C1-CH2CH2-C#N' for input: 'N(C)C-CH2CH2-C1C(O)C(O)C(O)C(O)C1-CH2CH2-C#N'
+[22:57:10] SMILES Parse Error: syntax error while parsing: C1CCCCC1-C(=O)NH-c1cc(cnc1)C(=O)N-C(=O)NH-C#N
+[22:57:10] SMILES Parse Error: check for mistakes around position 16:
+[22:57:10] C1CCCCC1-C(=O)NH-c1cc(cnc1)C(=O)N-C(=O)NH
+[22:57:10] ~~~~~~~~~~~~~~~^
+[22:57:10] SMILES Parse Error: Failed parsing SMILES 'C1CCCCC1-C(=O)NH-c1cc(cnc1)C(=O)N-C(=O)NH-C#N' for input: 'C1CCCCC1-C(=O)NH-c1cc(cnc1)C(=O)N-C(=O)NH-C#N'
+[22:57:10] SMILES Parse Error: syntax error while parsing: C#N-C(=O)NH-c1cc(cnc1)C(=O)N-C(=O)NH-C(F)(F)F
+[22:57:10] SMILES Parse Error: check for mistakes around position 11:
+[22:57:10] C#N-C(=O)NH-c1cc(cnc1)C(=O)N-C(=O)NH-C(F)
+[22:57:10] ~~~~~~~~~~^
+[22:57:10] SMILES Parse Error: Failed parsing SMILES 'C#N-C(=O)NH-c1cc(cnc1)C(=O)N-C(=O)NH-C(F)(F)F' for input: 'C#N-C(=O)NH-c1cc(cnc1)C(=O)N-C(=O)NH-C(F)(F)F'
+[22:57:10] SMILES Parse Error: syntax error while parsing: C1CCCCC1-C(=O)NH-c1cc(cnc1)C(=O)N-C(=O)NH-C1CCCCC1
+[22:57:10] SMILES Parse Error: check for mistakes around position 16:
+[22:57:10] C1CCCCC1-C(=O)NH-c1cc(cnc1)C(=O)N-C(=O)NH
+[22:57:10] ~~~~~~~~~~~~~~~^
+[22:57:10] SMILES Parse Error: Failed parsing SMILES 'C1CCCCC1-C(=O)NH-c1cc(cnc1)C(=O)N-C(=O)NH-C1CCCCC1' for input: 'C1CCCCC1-C(=O)NH-c1cc(cnc1)C(=O)N-C(=O)NH-C1CCCCC1'
+[22:57:10] Explicit valence for atom # 1 N, 4, is greater than permitted
+[22:57:10] SMILES Parse Error: syntax error while parsing: C1CCCCC1-CH2CH2-c1cc(cnc1)C(=O)N-CH2CH2-c1ccccc1
+[22:57:10] SMILES Parse Error: check for mistakes around position 11:
+[22:57:10] C1CCCCC1-CH2CH2-c1cc(cnc1)C(=O)N-CH2CH2-c
+[22:57:10] ~~~~~~~~~~^
+[22:57:10] SMILES Parse Error: Failed parsing SMILES 'C1CCCCC1-CH2CH2-c1cc(cnc1)C(=O)N-CH2CH2-c1ccccc1' for input: 'C1CCCCC1-CH2CH2-c1cc(cnc1)C(=O)N-CH2CH2-c1ccccc1'
+[22:57:10] SMILES Parse Error: syntax error while parsing: c1ccccc1-CH2CH2-C1C(O)C(O)C(O)C(O)C1-CH2CH2-C(F)(F)F
+[22:57:10] SMILES Parse Error: check for mistakes around position 11:
+[22:57:10] c1ccccc1-CH2CH2-C1C(O)C(O)C(O)C(O)C1-CH2C
+[22:57:10] ~~~~~~~~~~^
+[22:57:10] SMILES Parse Error: Failed parsing SMILES 'c1ccccc1-CH2CH2-C1C(O)C(O)C(O)C(O)C1-CH2CH2-C(F)(F)F' for input: 'c1ccccc1-CH2CH2-C1C(O)C(O)C(O)C(O)C1-CH2CH2-C(F)(F)F'
+[22:57:10] SMILES Parse Error: syntax error while parsing: c1ccccc1-NH-c1nc2c(n1)c(nc(n2)N)N-NH-N(C)C
+[22:57:10] SMILES Parse Error: check for mistakes around position 11:
+[22:57:10] c1ccccc1-NH-c1nc2c(n1)c(nc(n2)N)N-NH-N(C)
+[22:57:10] ~~~~~~~~~~^
+[22:57:10] SMILES Parse Error: Failed parsing SMILES 'c1ccccc1-NH-c1nc2c(n1)c(nc(n2)N)N-NH-N(C)C' for input: 'c1ccccc1-NH-c1nc2c(n1)c(nc(n2)N)N-NH-N(C)C'
+[22:57:10] SMILES Parse Error: syntax error while parsing: C1CCCCC1-CH2CH2-c1nc2c(n1)c(nc(n2)N)N-CH2CH2-C1CCCCC1
+[22:57:10] SMILES Parse Error: check for mistakes around position 11:
+[22:57:10] C1CCCCC1-CH2CH2-c1nc2c(n1)c(nc(n2)N)N-CH2
+[22:57:10] ~~~~~~~~~~^
+[22:57:10] SMILES Parse Error: Failed parsing SMILES 'C1CCCCC1-CH2CH2-c1nc2c(n1)c(nc(n2)N)N-CH2CH2-C1CCCCC1' for input: 'C1CCCCC1-CH2CH2-c1nc2c(n1)c(nc(n2)N)N-CH2CH2-C1CCCCC1'
+[22:57:10] SMILES Parse Error: syntax error while parsing: C1CCCCC1-C(=O)NH-c1ccnc2c1cc(cc2)-C(=O)NH-c1ccccc1
+[22:57:10] SMILES Parse Error: check for mistakes around position 16:
+[22:57:10] C1CCCCC1-C(=O)NH-c1ccnc2c1cc(cc2)-C(=O)NH
+[22:57:10] ~~~~~~~~~~~~~~~^
+[22:57:10] SMILES Parse Error: Failed parsing SMILES 'C1CCCCC1-C(=O)NH-c1ccnc2c1cc(cc2)-C(=O)NH-c1ccccc1' for input: 'C1CCCCC1-C(=O)NH-c1ccnc2c1cc(cc2)-C(=O)NH-c1ccccc1'
+[22:57:10] SMILES Parse Error: syntax error while parsing: OC-NH-c1cc(cc(c1)C(F)(F)F)-NH-C#N
+[22:57:10] SMILES Parse Error: check for mistakes around position 5:
+[22:57:10] OC-NH-c1cc(cc(c1)C(F)(F)F)-NH-C#N
+[22:57:10] ~~~~^
+[22:57:10] SMILES Parse Error: Failed parsing SMILES 'OC-NH-c1cc(cc(c1)C(F)(F)F)-NH-C#N' for input: 'OC-NH-c1cc(cc(c1)C(F)(F)F)-NH-C#N'
+[22:57:10] SMILES Parse Error: syntax error while parsing: C(F)(F)F-NH-c1ccnc2c1cc(cc2)-NH-C#N
+[22:57:10] SMILES Parse Error: check for mistakes around position 11:
+[22:57:10] C(F)(F)F-NH-c1ccnc2c1cc(cc2)-NH-C#N
+[22:57:10] ~~~~~~~~~~^
+[22:57:10] SMILES Parse Error: Failed parsing SMILES 'C(F)(F)F-NH-c1ccnc2c1cc(cc2)-NH-C#N' for input: 'C(F)(F)F-NH-c1ccnc2c1cc(cc2)-NH-C#N'
+[22:57:10] Explicit valence for atom # 1 N, 4, is greater than permitted
+[22:57:10] SMILES Parse Error: syntax error while parsing: C(F)(F)F-C(=O)NH-c1ccnc2c1cc(cc2)-C(=O)NH-OC
+[22:57:10] SMILES Parse Error: check for mistakes around position 16:
+[22:57:10] C(F)(F)F-C(=O)NH-c1ccnc2c1cc(cc2)-C(=O)NH
+[22:57:10] ~~~~~~~~~~~~~~~^
+[22:57:10] SMILES Parse Error: Failed parsing SMILES 'C(F)(F)F-C(=O)NH-c1ccnc2c1cc(cc2)-C(=O)NH-OC' for input: 'C(F)(F)F-C(=O)NH-c1ccnc2c1cc(cc2)-C(=O)NH-OC'
+[22:57:10] SMILES Parse Error: syntax error while parsing: C(F)(F)F-NH-c1cc(cc(c1)C(F)(F)F)-NH-OC
+[22:57:10] SMILES Parse Error: check for mistakes around position 11:
+[22:57:10] C(F)(F)F-NH-c1cc(cc(c1)C(F)(F)F)-NH-OC
+[22:57:10] ~~~~~~~~~~^
+[22:57:10] SMILES Parse Error: Failed parsing SMILES 'C(F)(F)F-NH-c1cc(cc(c1)C(F)(F)F)-NH-OC' for input: 'C(F)(F)F-NH-c1cc(cc(c1)C(F)(F)F)-NH-OC'
+[22:57:10] SMILES Parse Error: syntax error while parsing: C#N-NH-c1nc2c(n1)c(nc(n2)N)N-NH-OC
+[22:57:10] SMILES Parse Error: check for mistakes around position 6:
+[22:57:10] C#N-NH-c1nc2c(n1)c(nc(n2)N)N-NH-OC
+[22:57:10] ~~~~~^
+[22:57:10] SMILES Parse Error: Failed parsing SMILES 'C#N-NH-c1nc2c(n1)c(nc(n2)N)N-NH-OC' for input: 'C#N-NH-c1nc2c(n1)c(nc(n2)N)N-NH-OC'
+[22:57:10] SMILES Parse Error: syntax error while parsing: OC-C(=O)NH-C1C(O)C(O)C(O)C(O)C1-C(=O)NH-OC
+[22:57:10] SMILES Parse Error: check for mistakes around position 10:
+[22:57:10] OC-C(=O)NH-C1C(O)C(O)C(O)C(O)C1-C(=O)NH-O
+[22:57:10] ~~~~~~~~~^
+[22:57:10] SMILES Parse Error: Failed parsing SMILES 'OC-C(=O)NH-C1C(O)C(O)C(O)C(O)C1-C(=O)NH-OC' for input: 'OC-C(=O)NH-C1C(O)C(O)C(O)C(O)C1-C(=O)NH-OC'
+[22:57:10] Can't kekulize mol.  Unkekulized atoms: 3 4 5 6 7 8 9 10 11
+[22:57:10] SMILES Parse Error: syntax error while parsing: c1ccccc1-CH2CH2-C1C(O)C(O)C(O)C(O)C1-CH2CH2-N(C)C
+[22:57:10] SMILES Parse Error: check for mistakes around position 11:
+[22:57:10] c1ccccc1-CH2CH2-C1C(O)C(O)C(O)C(O)C1-CH2C
+[22:57:10] ~~~~~~~~~~^
+[22:57:10] SMILES Parse Error: Failed parsing SMILES 'c1ccccc1-CH2CH2-C1C(O)C(O)C(O)C(O)C1-CH2CH2-N(C)C' for input: 'c1ccccc1-CH2CH2-C1C(O)C(O)C(O)C(O)C1-CH2CH2-N(C)C'
+[22:57:10] Explicit valence for atom # 1 N, 4, is greater than permitted
+[22:57:10] SMILES Parse Error: syntax error while parsing: N(C)C-C(=O)NH-c1cc(cnc1)C(=O)N-C(=O)NH-C#N
+[22:57:10] SMILES Parse Error: check for mistakes around position 13:
+[22:57:10] N(C)C-C(=O)NH-c1cc(cnc1)C(=O)N-C(=O)NH-C#
+[22:57:10] ~~~~~~~~~~~~^
+[22:57:10] SMILES Parse Error: Failed parsing SMILES 'N(C)C-C(=O)NH-c1cc(cnc1)C(=O)N-C(=O)NH-C#N' for input: 'N(C)C-C(=O)NH-c1cc(cnc1)C(=O)N-C(=O)NH-C#N'
+[22:57:10] SMILES Parse Error: syntax error while parsing: c1ccccc1-C(=O)NH-c1ccnc2c1cc(cc2)-C(=O)NH-C#N
+[22:57:10] SMILES Parse Error: check for mistakes around position 16:
+[22:57:10] c1ccccc1-C(=O)NH-c1ccnc2c1cc(cc2)-C(=O)NH
+[22:57:10] ~~~~~~~~~~~~~~~^
+[22:57:10] SMILES Parse Error: Failed parsing SMILES 'c1ccccc1-C(=O)NH-c1ccnc2c1cc(cc2)-C(=O)NH-C#N' for input: 'c1ccccc1-C(=O)NH-c1ccnc2c1cc(cc2)-C(=O)NH-C#N'
+[22:57:10] SMILES Parse Error: syntax error while parsing: C#N-C(=O)NH-C1C(O)C(O)C(O)C(O)C1-C(=O)NH-C1CCCCC1
+[22:57:10] SMILES Parse Error: check for mistakes around position 11:
+[22:57:10] C#N-C(=O)NH-C1C(O)C(O)C(O)C(O)C1-C(=O)NH-
+[22:57:10] ~~~~~~~~~~^
+[22:57:10] SMILES Parse Error: Failed parsing SMILES 'C#N-C(=O)NH-C1C(O)C(O)C(O)C(O)C1-C(=O)NH-C1CCCCC1' for input: 'C#N-C(=O)NH-C1C(O)C(O)C(O)C(O)C1-C(=O)NH-C1CCCCC1'
+[22:57:10] SMILES Parse Error: syntax error while parsing: C#N-C(=O)NH-c1cc(cnc1)C(=O)N-C(=O)NH-C(F)(F)F
+[22:57:10] SMILES Parse Error: check for mistakes around position 11:
+[22:57:10] C#N-C(=O)NH-c1cc(cnc1)C(=O)N-C(=O)NH-C(F)
+[22:57:10] ~~~~~~~~~~^
+[22:57:10] SMILES Parse Error: Failed parsing SMILES 'C#N-C(=O)NH-c1cc(cnc1)C(=O)N-C(=O)NH-C(F)(F)F' for input: 'C#N-C(=O)NH-c1cc(cnc1)C(=O)N-C(=O)NH-C(F)(F)F'
+[22:57:10] SMILES Parse Error: syntax error while parsing: C#N-NH-c1ccnc2c1cc(cc2)-NH-C1CCCCC1
+[22:57:10] SMILES Parse Error: check for mistakes around position 6:
+[22:57:10] C#N-NH-c1ccnc2c1cc(cc2)-NH-C1CCCCC1
+[22:57:10] ~~~~~^
+[22:57:10] SMILES Parse Error: Failed parsing SMILES 'C#N-NH-c1ccnc2c1cc(cc2)-NH-C1CCCCC1' for input: 'C#N-NH-c1ccnc2c1cc(cc2)-NH-C1CCCCC1'
+[22:57:10] Explicit valence for atom # 3 F, 2, is greater than permitted
+[22:57:10] Can't kekulize mol.  Unkekulized atoms: 7 8 9 10 11 12 13 14 15
+[22:57:10] SMILES Parse Error: syntax error while parsing: OC-NH-c1cc(cc(c1)C(F)(F)F)-NH-OC
+[22:57:10] SMILES Parse Error: check for mistakes around position 5:
+[22:57:10] OC-NH-c1cc(cc(c1)C(F)(F)F)-NH-OC
+[22:57:10] ~~~~^
+[22:57:10] SMILES Parse Error: Failed parsing SMILES 'OC-NH-c1cc(cc(c1)C(F)(F)F)-NH-OC' for input: 'OC-NH-c1cc(cc(c1)C(F)(F)F)-NH-OC'
+[22:57:10] Can't kekulize mol.  Unkekulized atoms: 4 5 6 7 8 9 10 11 12
+[22:57:10] SMILES Parse Error: syntax error while parsing: c1ccccc1-C(=O)NH-c1nc2c(n1)c(nc(n2)N)N-C(=O)NH-c1ccccc1
+[22:57:10] SMILES Parse Error: check for mistakes around position 16:
+[22:57:10] c1ccccc1-C(=O)NH-c1nc2c(n1)c(nc(n2)N)N-C(
+[22:57:10] ~~~~~~~~~~~~~~~^
+[22:57:10] SMILES Parse Error: Failed parsing SMILES 'c1ccccc1-C(=O)NH-c1nc2c(n1)c(nc(n2)N)N-C(=O)NH-c1ccccc1' for input: 'c1ccccc1-C(=O)NH-c1nc2c(n1)c(nc(n2)N)N-C(=O)NH-c1ccccc1'
+[22:57:10] SMILES Parse Error: syntax error while parsing: OC-NH-c1cc(cnc1)C(=O)N-NH-C1CCCCC1
+[22:57:10] SMILES Parse Error: check for mistakes around position 5:
+[22:57:10] OC-NH-c1cc(cnc1)C(=O)N-NH-C1CCCCC1
+[22:57:10] ~~~~^
+[22:57:10] SMILES Parse Error: Failed parsing SMILES 'OC-NH-c1cc(cnc1)C(=O)N-NH-C1CCCCC1' for input: 'OC-NH-c1cc(cnc1)C(=O)N-NH-C1CCCCC1'
+[22:57:10] SMILES Parse Error: syntax error while parsing: c1ccccc1-C(=O)NH-C1C(O)C(O)C(O)C(O)C1-C(=O)NH-C1CCCCC1
+[22:57:10] SMILES Parse Error: check for mistakes around position 16:
+[22:57:10] c1ccccc1-C(=O)NH-C1C(O)C(O)C(O)C(O)C1-C(=
+[22:57:10] ~~~~~~~~~~~~~~~^
+[22:57:10] SMILES Parse Error: Failed parsing SMILES 'c1ccccc1-C(=O)NH-C1C(O)C(O)C(O)C(O)C1-C(=O)NH-C1CCCCC1' for input: 'c1ccccc1-C(=O)NH-C1C(O)C(O)C(O)C(O)C1-C(=O)NH-C1CCCCC1'
+======================================================================
+  MDR-TB AI Drug Discovery Pipeline v3
+  SAFETY: Computational Only — No Wet-Lab Protocols
+======================================================================
+
+============================================================
+  PHASE: DATA LOADING
+============================================================
+
+  [GEO] Loading expression data...
+  [GEO] ✓ Loaded cached 5000 genes × 19 samples
+  → Expression matrix: (5000, 19)
+  [WHO] Loading TB surveillance data...
+  [WHO] ✓ Loaded 90 cached records
+  → WHO data: (90, 7)
+  [DrugBank] Loading drug entries...
+  [DrugBank] → Generating mock DrugBank entries
+  ✓ Saved: data\drugbank\drugbank_entries.csv
+  ✓ Saved: data\drugbank\drugbank_schema.json
+  → DrugBank entries: (30, 8)
+  [PubChem] Loading compound structures...
+  [PubChem] ✓ Fetched 5 compounds from PubChem
+  ✓ Saved: data\pubchem\compounds.csv
+  → PubChem compounds: (5, 8)
+
+============================================================
+  PHASE: OMICS ENGINE
+============================================================
+
+  [Omics] Running differential expression analysis...
+  [Omics] ✓ DE analysis: 29 significant genes (padj < 0.05, |log2FC| > 1.0)
+  [Omics] Scoring pathways...
+  [Omics] ✓ Pathway scoring: 13 pathways scored
+  [Omics] Ranking genes...
+  [Omics] ✓ Gene ranking: Top gene = 6.0724821475787785 (score=0.9028)
+  ✓ Saved: outputs\omics\differential_expression.csv
+  ✓ Saved: outputs\omics\pathway_scores.csv
+  ✓ Saved: outputs\omics\gene_rankings.csv
+  ✓ Saved: outputs\omics\omics_summary.json
+
+============================================================
+  PHASE: EPIDEMIOLOGY ENGINE
+============================================================
+
+  [Epi] Analyzing TB trends...
+  [Epi] ✓ Computed trends for 10 regions × 3 metrics
+  [Epi] Detecting MDR patterns...
+  [Epi] ✓ MDR patterns: 4 critical, 5 high-risk regions
+  [Epi] Aggregating district-level data...
+  [Epi] ✓ District aggregation: 10 regions ranked
+  ✓ Saved: outputs\epi\tb_trends.csv
+  ✓ Saved: outputs\epi\mdr_patterns.csv
+  ✓ Saved: outputs\epi\district_aggregation.csv
+  ✓ Saved: outputs\epi\epi_summary.json
+
+============================================================
+  PHASE: TARGET ENGINE
+============================================================
+
+  [Target] Scoring drug targets...
+  [Target] ✓ Scored 15 targets → 5 high-priority
+  ✓ Saved: outputs\targets\scored_targets.csv
+  ✓ Saved: outputs\targets\target_summary.json
+
+============================================================
+  PHASE: DE NOVO GENERATOR
+============================================================
+
+  [DeNovo] Initializing Generative AI sequence for 50 novel compounds...
+  ✓ Saved: outputs\de_novo\generated_novel_compounds.csv
+  [DeNovo] ✓ Generated 50 novel chemical entities.
+
+============================================================
+  PHASE: COMPOUND ENGINE
+============================================================
+
+  [Compound] Processing SMILES and computing descriptors...
+  [Compound] ✓ RDKit descriptors computed for 55 compounds
+  [Compound] Clustering compounds...
+  ✓ Saved: outputs\compounds\cluster_centroids.csv
+  [Compound] ✓ Clustered into 5 groups
+  [Compound] Checking Lipinski compliance...
+  [Compound] ✓ Lipinski filter: 55/55 pass (≤1 violation)
+  ✓ Saved: outputs\compounds\descriptors.csv
+  ✓ Saved: outputs\compounds\clustered_compounds.csv
+  ✓ Saved: outputs\compounds\lipinski_compliance.csv
+  ✓ Saved: outputs\compounds\compound_summary.json
+
+============================================================
+  PHASE: ESMFOLD PREDICTOR
+============================================================
+
+  [ESMFold] Evaluating structural availability for target: InhA
+  [ESMFold] ✓ Loaded previously predicted structure for InhA
+
+============================================================
+  PHASE: DOCKING ENGINE
+============================================================
+
+  [Docking] Initializing HTVS for target: InhA
+  [Docking] ✓ Found cached PDB structure: 2ZKE
+  [Docking] Preparing 55 ligands for virtual screening...
+  ✓ Saved: outputs\docking\docking_results_InhA.csv
+  [Docking] ✓ Virtual screening complete. Best affinity: -9.77 kcal/mol
+
+============================================================
+  PHASE: ML PIPELINE
+============================================================
+
+  [ML] Preparing features and training models...
+  [ML] ⚠ Insufficient data for ML pipeline
+
+============================================================
+  PHASE: RESISTANCE MODULE
+============================================================
+
+  [Resistance] Mapping MDR genes...
+  [Resistance] ✓ Mapped 10 resistance genes
+  [Resistance] Building mutation catalog...
+  [Resistance] ✓ Cataloged 40 mutations across 10 genes
+  [Resistance] Computing resistance scores...
+  [Resistance] ✓ Scored 10 resistance genes
+  ✓ Saved: outputs\resistance\mdr_gene_map.csv
+  ✓ Saved: outputs\resistance\mutation_catalog.csv
+  ✓ Saved: outputs\resistance\resistance_scores.csv
+  ✓ Saved: outputs\resistance\resistance_summary.json
+
+============================================================
+  PHASE: RANKING ENGINE
+============================================================
+
+  [Ranking] Computing multi-objective scores...
+  [Ranking] ✓ Ranked 55 compounds: 0 leads, 27 promising
+  ✓ Saved: outputs\ranking\ranked_compounds.csv
+  ✓ Saved: outputs\ranking\top_10_compounds.csv
+  ✓ Saved: outputs\ranking\ranking_summary.json
+
+============================================================
+  PHASE: MANUSCRIPT GENERATOR
+============================================================
+
+  [Manuscript] Generating IMRAD manuscript...
+  [Manuscript] ✓ Saved manuscript to outputs\manuscript\manuscript_imrad.md
+  ✓ Saved: outputs\manuscript\manuscript_metadata.json
+
+============================================================
+  PHASE: ICMR GRANT PACKAGE
+============================================================
+
+  [ICMR] Generating grant proposal package...
+  [ICMR] ✓ Saved proposal to outputs\icmr\icmr_proposal.md
+  ✓ Saved: outputs\icmr\icmr_metadata.json
+
+============================================================
+  PHASE: IEC PROTOCOL
+============================================================
+
+  [IEC] Generating ethics protocol...
+  [IEC] ✓ Saved protocol to outputs\iec\iec_protocol.md
+  ✓ Saved: outputs\iec\iec_metadata.json
+
+======================================================================
+  PIPELINE COMPLETE
+======================================================================
+  ⏱ Total time: 23.0 seconds
+  ✓ Phases completed: 13/13
+  ✅ All phases completed successfully!
+
+  📁 Output directories:
+    omics/  (4 files)
+    epi/  (4 files)
+    targets/  (2 files)
+    de_novo/  (1 files)
+    compounds/  (5 files)
+    structures/  (1 files)
+    docking/  (1 files)
+    models/  (5 files)
+    resistance/  (4 files)
+    ranking/  (3 files)
+    manuscript/  (2 files)
+    icmr/  (2 files)
+    iec/  (2 files)
+  ✓ Saved: outputs\pipeline_report.json
