@@ -1,0 +1,302 @@
+[
+  {
+    "drugbank_id": "DB00951",
+    "name": "Isoniazid",
+    "formula": "C4H7N3O",
+    "target_gene": "InhA",
+    "mechanism": "Inhibits InhA in M. tuberculosis",
+    "status": "experimental",
+    "half_life": "19.3 hours",
+    "toxicity_class": "high"
+  },
+  {
+    "drugbank_id": "DB01045",
+    "name": "Rifampicin",
+    "formula": "C43H58N4O12",
+    "target_gene": "RpoB",
+    "mechanism": "Inhibits RpoB in M. tuberculosis",
+    "status": "experimental",
+    "half_life": "18.9 hours",
+    "toxicity_class": "low"
+  },
+  {
+    "drugbank_id": "DB00339",
+    "name": "Pyrazinamide",
+    "formula": "C5H5N3O",
+    "target_gene": "PncA",
+    "mechanism": "Inhibits PncA in M. tuberculosis",
+    "status": "experimental",
+    "half_life": "11.3 hours",
+    "toxicity_class": "high"
+  },
+  {
+    "drugbank_id": "DB00330",
+    "name": "Ethambutol",
+    "formula": "C10H24N2O2",
+    "target_gene": "EmbB",
+    "mechanism": "Inhibits EmbB in M. tuberculosis",
+    "status": "experimental",
+    "half_life": "11.6 hours",
+    "toxicity_class": "low"
+  },
+  {
+    "drugbank_id": "DB01082",
+    "name": "Streptomycin",
+    "formula": "C21H39N7O12",
+    "target_gene": "rrs",
+    "mechanism": "Inhibits rrs in M. tuberculosis",
+    "status": "experimental",
+    "half_life": "1.5 hours",
+    "toxicity_class": "moderate"
+  },
+  {
+    "drugbank_id": "DB01137",
+    "name": "Levofloxacin",
+    "formula": "C18H20FN3O4",
+    "target_gene": "GyrA",
+    "mechanism": "Inhibits GyrA in M. tuberculosis",
+    "status": "investigational",
+    "half_life": "5.9 hours",
+    "toxicity_class": "low"
+  },
+  {
+    "drugbank_id": "DB00218",
+    "name": "Moxifloxacin",
+    "formula": "C21H24FN3O4",
+    "target_gene": "GyrA",
+    "mechanism": "Inhibits GyrA in M. tuberculosis",
+    "status": "approved",
+    "half_life": "8.0 hours",
+    "toxicity_class": "moderate"
+  },
+  {
+    "drugbank_id": "DB12207",
+    "name": "Bedaquiline",
+    "formula": "C32H31BrN2O2",
+    "target_gene": "AtpE",
+    "mechanism": "Inhibits AtpE in M. tuberculosis",
+    "status": "approved",
+    "half_life": "10.9 hours",
+    "toxicity_class": "low"
+  },
+  {
+    "drugbank_id": "DB12230",
+    "name": "Delamanid",
+    "formula": "C25H25F3N4O6",
+    "target_gene": "F420",
+    "mechanism": "Inhibits F420 in M. tuberculosis",
+    "status": "experimental",
+    "half_life": "15.1 hours",
+    "toxicity_class": "moderate"
+  },
+  {
+    "drugbank_id": "DB00601",
+    "name": "Linezolid",
+    "formula": "C16H20FN3O4",
+    "target_gene": "rrl",
+    "mechanism": "Inhibits rrl in M. tuberculosis",
+    "status": "experimental",
+    "half_life": "11.5 hours",
+    "toxicity_class": "high"
+  },
+  {
+    "drugbank_id": "DB90010",
+    "name": "Compound_10",
+    "formula": "C4H7N3O",
+    "target_gene": "InhA",
+    "mechanism": "Inhibits InhA in M. tuberculosis",
+    "status": "investigational",
+    "half_life": "5.6 hours",
+    "toxicity_class": "high"
+  },
+  {
+    "drugbank_id": "DB90011",
+    "name": "Compound_11",
+    "formula": "C43H58N4O12",
+    "target_gene": "RpoB",
+    "mechanism": "Inhibits RpoB in M. tuberculosis",
+    "status": "approved",
+    "half_life": "2.1 hours",
+    "toxicity_class": "high"
+  },
+  {
+    "drugbank_id": "DB90012",
+    "name": "Compound_12",
+    "formula": "C5H5N3O",
+    "target_gene": "PncA",
+    "mechanism": "Inhibits PncA in M. tuberculosis",
+    "status": "experimental",
+    "half_life": "4.9 hours",
+    "toxicity_class": "high"
+  },
+  {
+    "drugbank_id": "DB90013",
+    "name": "Compound_13",
+    "formula": "C10H24N2O2",
+    "target_gene": "EmbB",
+    "mechanism": "Inhibits EmbB in M. tuberculosis",
+    "status": "investigational",
+    "half_life": "22.8 hours",
+    "toxicity_class": "moderate"
+  },
+  {
+    "drugbank_id": "DB90014",
+    "name": "Compound_14",
+    "formula": "C21H39N7O12",
+    "target_gene": "rrs",
+    "mechanism": "Inhibits rrs in M. tuberculosis",
+    "status": "investigational",
+    "half_life": "9.9 hours",
+    "toxicity_class": "moderate"
+  },
+  {
+    "drugbank_id": "DB90015",
+    "name": "Compound_15",
+    "formula": "C18H20FN3O4",
+    "target_gene": "GyrA",
+    "mechanism": "Inhibits GyrA in M. tuberculosis",
+    "status": "approved",
+    "half_life": "6.3 hours",
+    "toxicity_class": "high"
+  },
+  {
+    "drugbank_id": "DB90016",
+    "name": "Compound_16",
+    "formula": "C21H24FN3O4",
+    "target_gene": "GyrA",
+    "mechanism": "Inhibits GyrA in M. tuberculosis",
+    "status": "experimental",
+    "half_life": "15.0 hours",
+    "toxicity_class": "high"
+  },
+  {
+    "drugbank_id": "DB90017",
+    "name": "Compound_17",
+    "formula": "C32H31BrN2O2",
+    "target_gene": "AtpE",
+    "mechanism": "Inhibits AtpE in M. tuberculosis",
+    "status": "experimental",
+    "half_life": "21.9 hours",
+    "toxicity_class": "moderate"
+  },
+  {
+    "drugbank_id": "DB90018",
+    "name": "Compound_18",
+    "formula": "C25H25F3N4O6",
+    "target_gene": "F420",
+    "mechanism": "Inhibits F420 in M. tuberculosis",
+    "status": "investigational",
+    "half_life": "10.8 hours",
+    "toxicity_class": "moderate"
+  },
+  {
+    "drugbank_id": "DB90019",
+    "name": "Compound_19",
+    "formula": "C16H20FN3O4",
+    "target_gene": "rrl",
+    "mechanism": "Inhibits rrl in M. tuberculosis",
+    "status": "investigational",
+    "half_life": "14.1 hours",
+    "toxicity_class": "low"
+  },
+  {
+    "drugbank_id": "DB90020",
+    "name": "Compound_20",
+    "formula": "C4H7N3O",
+    "target_gene": "InhA",
+    "mechanism": "Inhibits InhA in M. tuberculosis",
+    "status": "experimental",
+    "half_life": "20.4 hours",
+    "toxicity_class": "moderate"
+  },
+  {
+    "drugbank_id": "DB90021",
+    "name": "Compound_21",
+    "formula": "C43H58N4O12",
+    "target_gene": "RpoB",
+    "mechanism": "Inhibits RpoB in M. tuberculosis",
+    "status": "investigational",
+    "half_life": "21.6 hours",
+    "toxicity_class": "moderate"
+  },
+  {
+    "drugbank_id": "DB90022",
+    "name": "Compound_22",
+    "formula": "C5H5N3O",
+    "target_gene": "PncA",
+    "mechanism": "Inhibits PncA in M. tuberculosis",
+    "status": "experimental",
+    "half_life": "22.2 hours",
+    "toxicity_class": "moderate"
+  },
+  {
+    "drugbank_id": "DB90023",
+    "name": "Compound_23",
+    "formula": "C10H24N2O2",
+    "target_gene": "EmbB",
+    "mechanism": "Inhibits EmbB in M. tuberculosis",
+    "status": "experimental",
+    "half_life": "13.0 hours",
+    "toxicity_class": "moderate"
+  },
+  {
+    "drugbank_id": "DB90024",
+    "name": "Compound_24",
+    "formula": "C21H39N7O12",
+    "target_gene": "rrs",
+    "mechanism": "Inhibits rrs in M. tuberculosis",
+    "status": "approved",
+    "half_life": "9.9 hours",
+    "toxicity_class": "moderate"
+  },
+  {
+    "drugbank_id": "DB90025",
+    "name": "Compound_25",
+    "formula": "C18H20FN3O4",
+    "target_gene": "GyrA",
+    "mechanism": "Inhibits GyrA in M. tuberculosis",
+    "status": "experimental",
+    "half_life": "20.1 hours",
+    "toxicity_class": "moderate"
+  },
+  {
+    "drugbank_id": "DB90026",
+    "name": "Compound_26",
+    "formula": "C21H24FN3O4",
+    "target_gene": "GyrA",
+    "mechanism": "Inhibits GyrA in M. tuberculosis",
+    "status": "approved",
+    "half_life": "7.5 hours",
+    "toxicity_class": "low"
+  },
+  {
+    "drugbank_id": "DB90027",
+    "name": "Compound_27",
+    "formula": "C32H31BrN2O2",
+    "target_gene": "AtpE",
+    "mechanism": "Inhibits AtpE in M. tuberculosis",
+    "status": "approved",
+    "half_life": "7.8 hours",
+    "toxicity_class": "low"
+  },
+  {
+    "drugbank_id": "DB90028",
+    "name": "Compound_28",
+    "formula": "C25H25F3N4O6",
+    "target_gene": "F420",
+    "mechanism": "Inhibits F420 in M. tuberculosis",
+    "status": "approved",
+    "half_life": "1.4 hours",
+    "toxicity_class": "low"
+  },
+  {
+    "drugbank_id": "DB90029",
+    "name": "Compound_29",
+    "formula": "C16H20FN3O4",
+    "target_gene": "rrl",
+    "mechanism": "Inhibits rrl in M. tuberculosis",
+    "status": "approved",
+    "half_life": "5.6 hours",
+    "toxicity_class": "high"
+  }
+]

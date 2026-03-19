@@ -1,0 +1,36 @@
+# MDR-TB AI Pipeline v3 — Dependencies
+# Core
+numpy>=1.24.0
+pandas>=2.0.0
+scipy>=1.10.0
+scikit-learn>=1.3.0
+
+# Bioinformatics
+biopython>=1.81
+
+# Chemistry
+rdkit-pypi>=2023.3.1
+
+# Visualization
+matplotlib>=3.7.0
+seaborn>=0.12.0
+plotly>=5.15.0
+
+# Dashboards
+streamlit>=1.28.0
+
+# Data connectors
+requests>=2.31.0
+GEOparse>=2.0.3
+
+# Document generation
+python-docx>=0.8.11
+fpdf2>=2.7.6
+
+# Testing
+pytest>=7.4.0
+
+# Utilities
+pyyaml>=6.0
+tqdm>=4.65.0
+joblib>=1.3.0

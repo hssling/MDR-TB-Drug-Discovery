@@ -1,0 +1,118 @@
+"""
+ICMR Grant Package Generator — Phase 12
+SAFETY: Computational only — grant document generation.
+"""
+import datetime
+from pathlib import Path
+import sys
+sys.path.insert(0, str(Path(__file__).parent.parent))
+from utils.helpers import load_config, ensure_dir, safe_save_json
+
+
+class ICMRGrantGenerator:
+    def __init__(self, config=None):
+        self.config = config or load_config()
+        self.output_dir = ensure_dir(Path(self.config["paths"]["output_dir"]) / "icmr")
+        self.timestamp = datetime.datetime.now().strftime("%Y-%m-%d")
+
+    def generate(self, pipeline_results: dict) -> str:
+        print("  [ICMR] Generating grant proposal package...")
+        sections = [self._cover(), self._summary(), self._objectives(),
+                     self._methodology(), self._workplan(), self._budget(),
+                     self._outcomes(), self._ethics(), self._refs()]
+        proposal = "\n\n".join(sections)
+        out = self.output_dir / "icmr_proposal.md"
+        with open(out, "w", encoding="utf-8") as f:
+            f.write(proposal)
+        print(f"  [ICMR] ✓ Saved proposal to {out}")
+        safe_save_json({"generated_date": self.timestamp, "word_count": len(proposal.split())},
+                       self.output_dir / "icmr_metadata.json")
+        return proposal
+
+    def _cover(self):
+        return f"""# ICMR RESEARCH PROPOSAL
+## AI-Driven Pipeline for MDR-TB Drug Target & Lead Compound Identification
+**Type:** ICMR Ad-hoc Research Grant | **Duration:** 3 years | **Budget:** ₹45,00,000
+**Date:** {self.timestamp} | **PI:** [Name] | **Institution:** [Name]
+**Priority Area:** Antimicrobial Resistance — Drug-Resistant Tuberculosis
+---"""
+
+    def _summary(self):
+        return """## 1. Project Summary
+MDR-TB poses a critical public health challenge in India (27% of global cases). This proposal presents a purely computational AI-driven pipeline integrating multi-omics analysis, epidemiological modeling, multi-factor target scoring, ML-based compound prediction, and resistance-informed ranking. Innovation includes integrative approach, resistance-informed discovery, India-specific epi context, fully computational design, and open-source tools. Directly addresses ICMR's AMR priority area."""
+
+    def _objectives(self):
+        return """## 2. Objectives
+**Primary:** Develop and validate an integrative AI pipeline for MDR-TB drug target and lead compound identification.
+**Specific Objectives:**
+1. Multi-omics analysis of MDR-TB expression data for DE genes and perturbed pathways
+2. Epidemiological trend modeling across Indian states using WHO/NTEP data
+3. Multi-factor drug target scoring (druggability, essentiality, resistance, expression, conservation)
+4. ML models (RF, GBM, LR) for anti-TB compound activity prediction
+5. Multi-objective compound ranking (activity, drug-likeness, target relevance, novelty, resistance coverage)
+6. Interactive dashboards for epidemiology and drug discovery visualization"""
+
+    def _methodology(self):
+        return """## 3. Methodology
+**Design:** Purely computational — no wet-lab, animal, or clinical experiments.
+**Data Sources:** GEO (transcriptomics), WHO/NTEP (epidemiology), DrugBank/PubChem (compounds), WHO mutation catalog (resistance).
+**Analysis Pipeline:**
+- DE analysis: Welch's t-test + Benjamini-Hochberg FDR correction
+- Pathway enrichment: Permutation-based scoring (13 KEGG TB pathways)
+- Target scoring: 5-factor weighted model
+- Molecular descriptors: RDKit (MW, LogP, TPSA, HBA, HBD, RotBonds)
+- ML: RF/GBM/LR with stratified 5-fold CV, ROC-AUC evaluation
+- Resistance: 10-gene mutation catalog with composite scoring
+- Ranking: 5-criterion weighted multi-objective optimization
+**Software:** Python 3.10+, scikit-learn, RDKit, BioPython, Streamlit, Plotly"""
+
+    def _workplan(self):
+        return """## 4. Work Plan
+**Year 1:** Data acquisition, preprocessing, DE analysis, pathway enrichment, target scoring, epi modeling
+**Year 2:** ML development, resistance mapping, multi-objective ranking, dashboard v1, integration testing
+**Year 3:** Validation, sensitivity analysis, dashboard v2, manuscripts, open-source release, ICMR report"""
+
+    def _budget(self):
+        return """## 5. Budget Summary (3 Years)
+| Item | Year 1 | Year 2 | Year 3 | Total |
+|------|--------|--------|--------|-------|
+| JRF/SRF | 3,84,000 | 3,84,000 | 4,32,000 | 12,00,000 |
+| Computing workstation | 3,00,000 | — | — | 3,00,000 |
+| GPU upgrade | — | 1,50,000 | — | 1,50,000 |
+| Cloud credits | 50,000 | 1,00,000 | 50,000 | 2,00,000 |
+| Software/DBs | 50,000 | 50,000 | 50,000 | 1,50,000 |
+| Travel/Conferences | 50,000 | 2,00,000 | 50,000 | 3,00,000 |
+| Contingency | 50,000 | 50,000 | 50,000 | 1,50,000 |
+| **TOTAL** | | | | **₹24,50,000** |"""
+
+    def _outcomes(self):
+        return """## 6. Expected Outcomes
+1. Validated computational pipeline for MDR-TB drug discovery
+2. ≥5 high-priority novel drug targets with multi-factor evidence
+3. ≥50 ranked compounds with drug-likeness profiles
+4. ≥3 trained ML models with documented performance
+5. Interactive Streamlit dashboards
+6. Comprehensive 10-gene MDR mutation catalog
+7. Primary research article (IF ≥ 3.0) + conference presentations
+8. Open-source code release on GitHub"""
+
+    def _ethics(self):
+        return """## 7. Ethical Considerations
+- **Purely computational study** — no human/animal subjects, no biological samples
+- IEC/IRB: Exemption/waiver to be obtained (computational analysis of public data)
+- All data are publicly available, anonymized, aggregate-level
+- No biosafety risks — no handling of M. tuberculosis
+- Social value: addresses MDR-TB in LMICs, accessible to under-resourced institutions"""
+
+    def _refs(self):
+        return """## 8. References
+1. WHO. Global TB Report 2023. 2. India TB Report 2023. 3. Dheda K, et al. Lancet Respir Med 2019.
+4. Cole ST, et al. Nature 1998. 5. Sassetti CM, et al. Mol Microbiol 2003.
+6. Zumla A, et al. Nat Rev Drug Discov 2013. 7. CRyPTIC. Nat Genet 2022.
+8. Ekins S, et al. PLoS One 2014. 9. ICMR Guidelines 2017. 10. Makarov V, et al. EMBO Mol Med 2014.
+---
+*Auto-generated by MDR-TB AI Pipeline v3. All proposed work is purely computational.*"""
+
+if __name__ == "__main__":
+    gen = ICMRGrantGenerator()
+    gen.generate({})

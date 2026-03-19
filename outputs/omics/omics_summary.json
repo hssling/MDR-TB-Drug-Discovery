@@ -1,0 +1,7 @@
+{
+  "total_genes_tested": 5000,
+  "significant_up": 230,
+  "significant_down": 196,
+  "top_pathway": "mtu00010_Glycolysis",
+  "top_gene": 6.0724821475787785
+}

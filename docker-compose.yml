@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  pipeline:
+    build: .
+    container_name: mdrtb_pipeline
+    volumes:
+      - ./data:/app/data
+      - ./outputs:/app/outputs
+    command: python run_pipeline.py
+
+  dashboard_epi:
+    build: .
+    container_name: mdrtb_epi_dash
+    volumes:
+      - ./outputs:/app/outputs:ro
+    ports:
+      - "8501:8501"
+    command: streamlit run dashboards/tb_epidemiology_dashboard.py --server.address=0.0.0.0 --server.port=8501
+    depends_on:
+      - pipeline
+
+  dashboard_discovery:
+    build: .
+    container_name: mdrtb_discovery_dash
+    volumes:
+      - ./outputs:/app/outputs:ro
+    ports:
+      - "8502:8502"
+    command: streamlit run dashboards/drug_discovery_dashboard.py --server.address=0.0.0.0 --server.port=8502
+    depends_on:
+      - pipeline

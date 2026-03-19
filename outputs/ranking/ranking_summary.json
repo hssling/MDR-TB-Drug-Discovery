@@ -1,0 +1,19 @@
+{
+  "n_compounds_ranked": 55,
+  "top_compound": "MDR_AI_030",
+  "top_score": 0.736,
+  "top_10_ids": [
+    "MDR_AI_030",
+    "MDR_AI_048",
+    "MDR_AI_039",
+    "MDR_AI_047",
+    "MDR_AI_046",
+    "MDR_AI_029",
+    "MDR_AI_007",
+    "MDR_AI_031",
+    "MDR_AI_049",
+    "MDR_AI_005"
+  ],
+  "mean_rank_score": 0.6016,
+  "n_high_priority": 0
+}

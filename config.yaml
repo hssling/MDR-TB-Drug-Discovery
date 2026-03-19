@@ -1,0 +1,130 @@
+# =============================================================
+# MDR-TB AI Pipeline v3 — Master Configuration
+# =============================================================
+# SAFETY: Purely computational. No wet-lab or synthesis steps.
+# =============================================================
+
+project:
+  name: "MDR-TB AI Drug Discovery Pipeline v3"
+  version: "3.0.0"
+  author: "MDR-TB Research Group"
+  safety_mode: "computational_only"
+
+paths:
+  data_dir: "data"
+  mock_dir: "data/mock"
+  output_dir: "outputs"
+  model_dir: "outputs/models"
+  manuscript_dir: "outputs/manuscript"
+  icmr_dir: "outputs/icmr"
+  iec_dir: "outputs/iec"
+
+data_connectors:
+  geo:
+    enabled: true
+    series_id: "GSE153029"
+    fallback_to_mock: true
+    mock_n_genes: 5000
+    mock_n_samples: 20
+  who:
+    enabled: true
+    data_file: "data/mock/who_tb_data.csv"
+    fallback_to_mock: true
+  drugbank:
+    enabled: true
+    schema_file: "data/mock/drugbank_schema.json"
+    fallback_to_mock: true
+  pubchem:
+    enabled: true
+    compound_ids: [2244, 5291, 54675776, 5757, 2764]
+    fallback_to_mock: true
+
+omics:
+  log2fc_threshold: 1.0
+  pvalue_threshold: 0.05
+  top_n_genes: 50
+  pathway_db: "kegg"
+
+epidemiology:
+  years: [2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023]
+  regions:
+    - "Maharashtra"
+    - "Gujarat"
+    - "Rajasthan"
+    - "Uttar Pradesh"
+    - "Tamil Nadu"
+    - "Karnataka"
+    - "Delhi"
+    - "West Bengal"
+    - "Madhya Pradesh"
+    - "Bihar"
+
+target_scoring:
+  weights:
+    druggability: 0.25
+    essentiality: 0.25
+    resistance_association: 0.20
+    expression_fold_change: 0.15
+    conservation: 0.15
+
+compound_engine:
+  descriptor_types:
+    - "MolWt"
+    - "LogP"
+    - "TPSA"
+    - "NumHAcceptors"
+    - "NumHDonors"
+    - "NumRotatableBonds"
+  n_clusters: 5
+
+modeling:
+  test_size: 0.2
+  random_state: 42
+  algorithms:
+    - "random_forest"
+    - "gradient_boosting"
+    - "logistic_regression"
+  cv_folds: 5
+
+resistance:
+  mdr_genes:
+    - gene: "rpoB"
+      function: "RNA polymerase beta subunit"
+      drug: "Rifampicin"
+      weight: 0.95
+    - gene: "katG"
+      function: "Catalase-peroxidase"
+      drug: "Isoniazid"
+      weight: 0.90
+    - gene: "inhA"
+      function: "Enoyl-ACP reductase"
+      drug: "Isoniazid"
+      weight: 0.85
+    - gene: "embB"
+      function: "Arabinosyltransferase"
+      drug: "Ethambutol"
+      weight: 0.80
+    - gene: "pncA"
+      function: "Pyrazinamidase"
+      drug: "Pyrazinamide"
+      weight: 0.75
+    - gene: "gyrA"
+      function: "DNA gyrase subunit A"
+      drug: "Fluoroquinolones"
+      weight: 0.85
+    - gene: "rrs"
+      function: "16S rRNA"
+      drug: "Aminoglycosides"
+      weight: 0.80
+    - gene: "ethA"
+      function: "Monooxygenase"
+      drug: "Ethionamide"
+      weight: 0.70
+
+ranking:
+  weights:
+    predicted_activity: 0.30
+    lipinski_compliance: 0.15
+    target_score: 0.20
+    novelty: 0.15
+    resistance_coverage: 0.20

@@ -1,0 +1,12 @@
+{
+  "n_targets_scored": 15,
+  "top_target": "InhA",
+  "top_score": 0.8695,
+  "high_priority_targets": [
+    "InhA",
+    "RpoB",
+    "GyrA",
+    "EmbB",
+    "Rrs"
+  ]
+}

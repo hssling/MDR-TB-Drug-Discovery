@@ -1,0 +1,7 @@
+{
+  "n_compounds": 55,
+  "n_descriptors_computed": 20,
+  "n_clusters": 5,
+  "lipinski_pass": 55,
+  "lipinski_fail": 0
+}
