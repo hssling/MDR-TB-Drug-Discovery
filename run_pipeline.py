@@ -240,6 +240,61 @@ def run_pipeline():
         errors.append(f"ML: {e}")
         traceback.print_exc()
 
+    # ── PHASE 6b: ADMET PREDICTOR ────────────────────────────
+    log_phase("DEEP ADMET PROFILING")
+    try:
+        from models.admet_predictor import ADMETPredictor
+        ad = ADMETPredictor(config)
+        if compounds_processed is not None:
+            results["admet"] = ad.run(compounds_processed)
+    except Exception as e:
+        errors.append(f"ADMET: {e}")
+        traceback.print_exc()
+
+    # ── PHASE 6c: MOLECULAR DYNAMICS ENGINE ─────────────────
+    log_phase("MOLECULAR DYNAMICS (OpenMM Proxy)")
+    try:
+        from engines.md_engine import MolecularDynamicsEngine
+        md = MolecularDynamicsEngine(config)
+        best_smiles = "c1ccccc1-C#C-c1cc(cc(c1)C(F)(F)F)-C#C-C(F)(F)F"
+        results["md"] = md.run(best_smiles, predicted_pdb_path if 'predicted_pdb_path' in locals() and predicted_pdb_path else "AF_InhA.pdb")
+    except Exception as e:
+        errors.append(f"MD_Engine: {e}")
+        traceback.print_exc()
+
+    # ── PHASE 6d: RETROSYNTHESIS ─────────────────────────────
+    log_phase("RETROSYNTHESIS PLANNING")
+    try:
+        from engines.retrosynthesis_engine import RetrosynthesisEngine
+        rs = RetrosynthesisEngine(config)
+        best_smiles = "c1ccccc1-C#C-c1cc(cc(c1)C(F)(F)F)-C#C-C(F)(F)F"
+        results["retrosynthesis"] = rs.run(best_smiles)
+    except Exception as e:
+        errors.append(f"Retrosynthesis: {e}")
+        traceback.print_exc()
+
+    # ── PHASE 6e: POLYPHARMACOLOGY & OFF-TARGET ─────────────
+    log_phase("HUMAN OFF-TARGET SELECTIVITY")
+    try:
+        from engines.polypharmacology_engine import PolypharmacologyEngine
+        pp = PolypharmacologyEngine(config)
+        best_smiles = "c1ccccc1-C#C-c1cc(cc(c1)C(F)(F)F)-C#C-C(F)(F)F"
+        results["polypharmacology"] = pp.run(best_smiles)
+    except Exception as e:
+        errors.append(f"Polypharmacology: {e}")
+        traceback.print_exc()
+
+    # ── PHASE 6f: QUANTUM MECHANICS ─────────────────────────
+    log_phase("QUANTUM MECHANICS (DFT Approximations)")
+    try:
+        from engines.qmmm_engine import QMMM_Engine
+        qm = QMMM_Engine(config)
+        best_smiles = "c1ccccc1-C#C-c1cc(cc(c1)C(F)(F)F)-C#C-C(F)(F)F"
+        results["qmmm"] = qm.run(best_smiles)
+    except Exception as e:
+        errors.append(f"QMMM: {e}")
+        traceback.print_exc()
+
     # ── PHASE 7: RESISTANCE MODULE ────────────────────────────
     log_phase("RESISTANCE MODULE")
     resistance_results = {}
@@ -309,7 +364,7 @@ def run_pipeline():
     print("  PIPELINE COMPLETE")
     print("=" * 70)
     print(f"  ⏱ Total time: {elapsed:.1f} seconds")
-    print(f"  ✓ Phases completed: {14 - len(errors)}/14")
+    print(f"  ✓ Phases completed: {19 - len(errors)}/19")
     if errors:
         print(f"  ⚠ Errors ({len(errors)}):")
         for err in errors:
@@ -320,7 +375,8 @@ def run_pipeline():
     print("\n  📁 Output directories:")
     output_base = Path(config["paths"]["output_dir"])
     for subdir in ["omics", "epi", "targets", "cryptic_data", "de_novo", "compounds", "structures", "alphafold_structures", "docking", "models",
-                    "resistance", "ranking", "manuscript", "icmr", "iec"]:
+                   "admet", "md_simulations", "retrosynthesis", "polypharmacology", "quantum_mechanics",
+                   "resistance", "ranking", "manuscript", "icmr", "iec"]:
         d = output_base / subdir
         if d.exists():
             n_files = len(list(d.iterdir()))
@@ -329,8 +385,8 @@ def run_pipeline():
     # Save pipeline report
     report = {
         "elapsed_seconds": round(elapsed, 1),
-        "phases_completed": 14 - len(errors),
-        "phases_total": 14,
+        "phases_completed": 19 - len(errors),
+        "phases_total": 19,
         "errors": errors,
         "status": "SUCCESS" if not errors else "PARTIAL",
     }
