@@ -2,7 +2,7 @@
 ## Application for Ethics Exemption / Waiver
 **Study Title:** Integrative AI-Driven Pipeline for MDR-TB Drug Target and Lead Compound Identification
 **PI:** [Principal Investigator Name] | **Department:** [Department]
-**Institution:** [Institution Name] | **Date:** 2026-03-19
+**Institution:** [Institution Name] | **Date:** 2026-03-20
 ---
 
 ## 1. Study Classification
@@ -73,8 +73,8 @@ I/We, the undersigned, hereby declare that:
 4. We will comply with all institutional and national guidelines for research conduct
 5. Any future extension requiring wet-lab validation will be submitted for separate IEC review
 
-**Principal Investigator:** _________________________ Date: 2026-03-19
-**Co-Investigator(s):** _________________________ Date: 2026-03-19
+**Principal Investigator:** _________________________ Date: 2026-03-20
+**Co-Investigator(s):** _________________________ Date: 2026-03-20
 **Head of Department:** _________________________ Date: ___________
 
 ---

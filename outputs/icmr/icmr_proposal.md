@@ -1,7 +1,7 @@
 # ICMR RESEARCH PROPOSAL
 ## AI-Driven Pipeline for MDR-TB Drug Target & Lead Compound Identification
 **Type:** ICMR Ad-hoc Research Grant | **Duration:** 3 years | **Budget:** ₹45,00,000
-**Date:** 2026-03-19 | **PI:** [Name] | **Institution:** [Name]
+**Date:** 2026-03-20 | **PI:** [Name] | **Institution:** [Name]
 **Priority Area:** Antimicrobial Resistance — Drug-Resistant Tuberculosis
 ---
 

@@ -1,15 +1,18 @@
-{
-  "generated_date": "2026-03-19",
-  "word_count": 2930,
-  "sections": [
-    "Title",
-    "Abstract",
-    "Introduction",
-    "Methods",
-    "Results",
-    "Discussion",
-    "Conclusion",
-    "References",
-    "Supplementary"
-  ]
+﻿{
+    "generated_date":  "2026-03-20",
+    "word_count":  3255,
+    "sections":  [
+                     "Title",
+                     "Abstract",
+                     "Scientific Contribution",
+                     "Introduction",
+                     "Methods",
+                     "Results",
+                     "Discussion",
+                     "Limitations",
+                     "Conclusions",
+                     "Declarations",
+                     "References",
+                     "Supplementary"
+                 ]
 }
