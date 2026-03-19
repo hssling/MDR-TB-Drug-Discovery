@@ -96,9 +96,13 @@ All values reported in this manuscript were checked against saved CSV and JSON o
 
 ### 3.1 Omics, pathway, and epidemiological context
 
-The omics module identified 426 significant differential-expression events across 5,000 genes. The top five exported pathway scores were `mtu00010_Glycolysis` (8.6509), `mtu00020_TCA_cycle` (3.7137), `mtu00190_Oxidative_phosphorylation` (2.9899), `mtu00230_Purine_metabolism` (2.8079), and `mtu00240_Pyrimidine_metabolism` (2.4112). These outputs suggest a metabolically perturbed state in the current computational run and provide a disease-context backdrop for downstream prioritization.
+The omics module identified 426 significant differential-expression events across 5,000 genes. The top five exported pathway scores were `mtu00010_Glycolysis` (8.6509), `mtu00020_TCA_cycle` (3.7137), `mtu00190_Oxidative_phosphorylation` (2.9899), `mtu00230_Purine_metabolism` (2.8079), and `mtu00240_Pyrimidine_metabolism` (2.4112). These outputs define the dominant metabolic signal within the current computational run and provide a disease-context backdrop for downstream prioritization.
 
-The epidemiology summary contextualized these results within a region-level trend analysis covering 2015-2023. The overall incidence trend was reported as decreasing, whereas the MDR-TB trend was rising. Rajasthan emerged as the highest-burden region in the current run, and the mean MDR-TB proportion across the analyzed regional set was 8.75%. Although these values are not used as causal inputs to compound-level scoring, they reinforce the rationale for emphasizing resistance-aware discovery.
+![Figure 4. Top enriched pathways in the omics module](../figures/figure_4_pathways.png)
+
+*Figure 4. Top enriched pathways from the omics module, highlighting glycolysis and related metabolic processes in the current computational run.*
+
+The epidemiology summary contextualized these results within a region-level trend analysis covering 2015-2023. The overall incidence trend was reported as decreasing, whereas the MDR-TB trend was rising. The exported epidemiology summary identified Rajasthan as the highest overall burden region, whereas the MDR-specific pattern table showed the highest latest MDR-TB percentage in Madhya Pradesh. The mean MDR-TB proportion across the analyzed regional set was 8.75%. Although these values are not used as causal inputs to compound-level scoring, they reinforce the rationale for emphasizing resistance-aware discovery.
 
 ![Figure 2. Regional MDR-TB burden patterns](../figures/figure_3_mdr_patterns.png)
 
@@ -131,10 +135,6 @@ The emergence of InhA as the leading target is noteworthy because it aligns a bi
 The ranking engine evaluated 55 compounds. The top-ranked compound was `MDR_AI_030` with a final ranking score of 0.736. Although the summary file reported zero compounds in a strict `n_high_priority` bucket, the ranked table still identified multiple compounds as `Promising`, with `MDR_AI_030` ranked first.
 
 Docking results against InhA showed a leading cluster of compounds with substantially stronger predicted affinities than the repeated -4.0 kcal/mol plateau seen among many lower-ranked compounds. The top 10 docked compounds are shown in Table 2.
-
-![Figure 4. Top enriched pathways in the omics module](../figures/figure_4_pathways.png)
-
-*Figure 4. Top enriched pathways from the omics module, highlighting glycolysis and related metabolic processes in the current computational run.*
 
 ![Figure 5. Top docking hits against InhA](../figures/figure_5_docking_hits.png)
 
@@ -171,7 +171,7 @@ Retrosynthesis identified a one-step Sonogashira cross-coupling route using the 
 
 ![Figure 6. Top valid de novo molecular structures](../figures/figure_6_top_structures.png)
 
-*Figure 6. Two-dimensional molecular structure renderings for selected top valid de novo compounds identified in the ranking workflow (`MDR_AI_030`, `MDR_AI_039`, `MDR_AI_047`, `MDR_AI_005`, `MDR_AI_026`, and `MDR_AI_042`).*
+*Figure 6. Two-dimensional molecular structure renderings for selected top RDKit-valid de novo compounds identified in the ranking workflow (`MDR_AI_030`, `MDR_AI_039`, `MDR_AI_047`, `MDR_AI_005`, `MDR_AI_026`, and `MDR_AI_042`). Compounds with malformed or unsupported SMILES were excluded from rendering rather than redrawn manually.*
 
 **Table 3. Integrated post-docking profile of `MDR_AI_030`**
 
@@ -214,7 +214,7 @@ InhA emerged as the leading target from the current scoring framework. This is b
 
 At the same time, all of these outputs remain predictive. Docking scores are not biochemical affinities. The current molecular-dynamics module reports a short, proxy-style summary and does not substitute for a full production simulation campaign. ADMET and polypharmacology findings are predictive filters rather than empirical safety or pharmacokinetic measurements. The retrosynthetic module proposes a plausible route but does not demonstrate laboratory success. These distinctions matter, especially when a manuscript is intended to be publication-ready.
 
-Another important point is the role of fallback or simulated data. The current project architecture allows progress even when complete live datasets are unavailable, which is useful for workflow demonstration and software validation. However, it also means that biological realism depends on upstream data availability and quality. This limitation must be made explicit rather than hidden behind overstated prose.
+Another important point is the role of fallback or simulated data. The current project architecture allows progress even when complete live datasets are unavailable, which is useful for workflow demonstration and software validation. However, it also means that biological realism depends on upstream data availability and quality. In practical terms, pathway-level biology, ranking behavior, and downstream prioritization should be interpreted as outputs of the configured computational environment, not as stand-alone evidence of in vivo mechanism.
 
 The present manuscript therefore emphasizes traceability. All reported values were pulled from saved project artefacts, and narrative claims were constrained to what those files support. This approach is particularly important for auto-generated or AI-assisted manuscripts, where drift between the data and the prose can occur quickly if output files are not rechecked systematically.
 
@@ -222,7 +222,7 @@ The present manuscript therefore emphasizes traceability. All reported values we
 
 ## 5. Limitations
 
-This work has several limitations. First, the workflow can operate with simulated or fallback data, so the biological realism of some upstream components is limited by data availability. Second, several modules are heuristic or proxy-based rather than full experimental or high-fidelity computational replacements. Third, the study does not include external prospective validation against independent MDR-TB screening datasets. Fourth, no wet-lab synthesis, enzymatic assay, MIC testing, or cell-based validation was performed. Finally, despite being manuscript-ready in structure and traceability, the text should still undergo domain-expert review before formal submission.
+This work has several limitations. First, the workflow can operate with simulated or fallback data, so the biological realism of some upstream components is limited by data availability. Second, several modules are heuristic or proxy-based rather than full experimental or high-fidelity computational replacements. Third, the ranked-compound table includes molecules whose SMILES are not consistently parseable across cheminformatics tooling, which affects descriptor completeness and limits structure rendering to the valid subset shown in Figure 6. Fourth, the study does not include external prospective validation against independent MDR-TB screening datasets. Fifth, no wet-lab synthesis, enzymatic assay, MIC testing, or cell-based validation was performed. Finally, despite being manuscript-ready in structure and traceability, the text should still undergo domain-expert review before formal submission.
 
 ---
 
@@ -238,7 +238,7 @@ This end-to-end computational workflow prioritized InhA as the leading target an
 
 **Consent for publication:** Not applicable.
 
-**Availability of data and materials:** All reported values are traceable to saved output files in the project workspace, including `outputs/docking/docking_results_InhA.csv`, `outputs/md_simulations/md_summary.csv`, `outputs/admet/admet_toxicity_report.csv`, `outputs/polypharmacology/human_offtarget_report.csv`, `outputs/quantum_mechanics/electronic_orbitals.csv`, `outputs/retrosynthesis/synthesis_routes.csv`, `outputs/targets/scored_targets.csv`, `outputs/ranking/ranked_compounds.csv`, `outputs/omics/omics_summary.json`, and `outputs/resistance/resistance_scores.csv`.
+**Availability of data and materials:** All reported values are traceable to saved output files in the project workspace, including `outputs/docking/docking_results_InhA.csv`, `outputs/md_simulations/md_summary.csv`, `outputs/admet/admet_toxicity_report.csv`, `outputs/polypharmacology/human_offtarget_report.csv`, `outputs/quantum_mechanics/electronic_orbitals.csv`, `outputs/retrosynthesis/synthesis_routes.csv`, `outputs/targets/scored_targets.csv`, `outputs/ranking/ranked_compounds.csv`, `outputs/omics/omics_summary.json`, `outputs/omics/pathway_scores.csv`, `outputs/epi/epi_summary.json`, `outputs/epi/mdr_patterns.csv`, `outputs/models/ml_summary.json`, `outputs/models/model_comparison.csv`, and `outputs/resistance/resistance_scores.csv`.
 
 **Code availability:** Manuscript generation and pipeline orchestration are implemented in the local project codebase, including `run_pipeline.py` and `generators/manuscript_generator.py`.
 
@@ -256,7 +256,7 @@ This end-to-end computational workflow prioritized InhA as the leading target an
 
 1. World Health Organization. Global tuberculosis report 2025. Geneva: World Health Organization; 2025.
 2. Dheda K, Gumbo T, Maartens G, Dooley KE, McNerney R, Murray M, et al. The epidemiology, pathogenesis, transmission, diagnosis, and management of multidrug-resistant, extensively drug-resistant, and incurable tuberculosis. Lancet Respir Med. 2017;5(4):291-360.
-3. Vilchèze C, Jacobs WR Jr. The mechanism of isoniazid killing: clarity through the scope of genetics. Annu Rev Microbiol. 2007;61:35-50.
+3. Vilcheze C, Jacobs WR Jr. The mechanism of isoniazid killing: clarity through the scope of genetics. Annu Rev Microbiol. 2007;61:35-50.
 4. Stokes JM, Yang K, Swanson K, Jin W, Cubillos-Ruiz A, Donghia NM, et al. A deep learning approach to antibiotic discovery. Cell. 2020;180(4):688-702.
 5. The CRyPTIC Consortium. A data compendium associating the genomes of 12,289 *Mycobacterium tuberculosis* isolates with quantitative resistance phenotypes to 13 antituberculosis drugs. PLoS Biol. 2022;20(8):e3001721.
 6. Jumper J, Evans R, Pritzel A, Green T, Figurnov M, Ronneberger O, et al. Highly accurate protein structure prediction with AlphaFold. Nature. 2021;596(7873):583-589.

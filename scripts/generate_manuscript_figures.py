@@ -5,6 +5,7 @@ from pathlib import Path
 import matplotlib.pyplot as plt
 import pandas as pd
 from matplotlib.patches import FancyBboxPatch
+from rdkit import RDLogger
 from rdkit import Chem
 from rdkit.Chem import Draw
 
@@ -17,6 +18,7 @@ FIGURES = OUTPUTS / "figures"
 def setup() -> None:
     FIGURES.mkdir(parents=True, exist_ok=True)
     plt.style.use("seaborn-v0_8-whitegrid")
+    RDLogger.DisableLog("rdApp.*")
 
 
 def save(fig: plt.Figure, name: str) -> None:
@@ -25,88 +27,115 @@ def save(fig: plt.Figure, name: str) -> None:
     plt.close(fig)
 
 
+def annotate_horizontal_bars(ax: plt.Axes, values: list[float], fmt: str = "{:.2f}", pad: float = 0.02) -> None:
+    xmin, xmax = ax.get_xlim()
+    span = xmax - xmin
+    for patch, value in zip(ax.patches, values):
+        y = patch.get_y() + patch.get_height() / 2
+        x = patch.get_width()
+        if value >= 0:
+            text_x = x + span * pad
+            ha = "left"
+        else:
+            text_x = x - span * pad
+            ha = "right"
+        ax.text(text_x, y, fmt.format(value), va="center", ha=ha, fontsize=9, color="#111827")
+
+
+def annotate_vertical_bars(ax: plt.Axes, values: list[float], fmt: str = "{:.2f}", pad: float = 0.02) -> None:
+    ymin, ymax = ax.get_ylim()
+    span = ymax - ymin
+    for patch, value in zip(ax.patches, values):
+        x = patch.get_x() + patch.get_width() / 2
+        y = patch.get_height()
+        ax.text(x, y + span * pad, fmt.format(value), va="bottom", ha="center", fontsize=9, color="#111827")
+
+
 def figure_workflow() -> None:
     steps = [
-        "Data\nloading",
-        "Omics +\nepidemiology",
-        "Resistance\nmapping",
-        "Target\nranking",
-        "De novo\nchemistry",
-        "Docking +\ncompound ranking",
-        "ADMET / MD /\nQM / off-target",
+        "Data loading",
+        "Omics + epidemiology",
+        "Resistance mapping",
+        "Target ranking",
+        "De novo chemistry",
+        "Docking + ranking",
+        "ADMET / MD / QM /\noff-target screening",
         "Retrosynthesis +\nmanuscript outputs",
     ]
-    fig, ax = plt.subplots(figsize=(12, 6))
+    fig, ax = plt.subplots(figsize=(8.5, 12))
     ax.axis("off")
-    positions = [
-        (0.12, 0.72),
-        (0.37, 0.72),
-        (0.62, 0.72),
-        (0.87, 0.72),
-        (0.12, 0.28),
-        (0.37, 0.28),
-        (0.62, 0.28),
-        (0.87, 0.28),
-    ]
-    for (x, y), label in zip(positions, steps):
+    positions = [(0.5, 0.9 - index * 0.105) for index in range(len(steps))]
+    for index, ((x, y), label) in enumerate(zip(positions, steps), start=1):
         box = FancyBboxPatch(
-            (x - 0.095, y - 0.09),
-            0.19,
-            0.18,
+            (x - 0.28, y - 0.038),
+            0.56,
+            0.076,
             boxstyle="round,pad=0.02",
             facecolor="#dbeafe",
             edgecolor="#1d4ed8",
             linewidth=1.5,
         )
         ax.add_patch(box)
-        ax.text(x, y, label, ha="center", va="center", fontsize=10, weight="bold")
+        ax.text(x - 0.24, y, f"{index}", ha="center", va="center", fontsize=10, weight="bold", color="#1e3a8a")
+        ax.text(x - 0.2, y, label, ha="left", va="center", fontsize=11, weight="bold")
 
-    top = positions[:4]
-    bottom = positions[4:]
-    for start, end in zip(top[:-1], top[1:]):
-        ax.annotate("", xy=(end[0] - 0.11, end[1]), xytext=(start[0] + 0.11, start[1]), arrowprops=dict(arrowstyle="->", lw=1.8, color="#1f2937"))
-    ax.annotate("", xy=(bottom[0][0], bottom[0][1] + 0.12), xytext=(top[-1][0], top[-1][1] - 0.12), arrowprops=dict(arrowstyle="->", lw=1.8, color="#1f2937", connectionstyle="arc3,rad=-0.35"))
-    for start, end in zip(bottom[:-1], bottom[1:]):
-        ax.annotate("", xy=(end[0] - 0.11, end[1]), xytext=(start[0] + 0.11, start[1]), arrowprops=dict(arrowstyle="->", lw=1.8, color="#1f2937"))
+    for start, end in zip(positions[:-1], positions[1:]):
+        ax.annotate(
+            "",
+            xy=(end[0], end[1] + 0.05),
+            xytext=(start[0], start[1] - 0.05),
+            arrowprops=dict(arrowstyle="->", lw=1.8, color="#1f2937"),
+        )
 
     ax.set_title("Figure 1. Computational workflow for MDR-TB lead prioritization", fontsize=15, weight="bold", pad=14)
     save(fig, "figure_1_workflow.png")
 
 
 def figure_target_ranking() -> None:
-    df = pd.read_csv(OUTPUTS / "targets" / "scored_targets.csv").sort_values("Final_Score", ascending=True).tail(10)
-    fig, ax = plt.subplots(figsize=(8, 5))
-    ax.barh(df["Target"], df["Final_Score"], color="#2563eb")
+    df = pd.read_csv(OUTPUTS / "targets" / "scored_targets.csv").sort_values("Final_Score", ascending=False).head(10).iloc[::-1]
+    fig, ax = plt.subplots(figsize=(8.5, 5.5))
+    values = df["Final_Score"].tolist()
+    ax.barh(df["Target"], values, color="#2563eb")
     ax.set_xlabel("Final score")
     ax.set_title("Figure 2. Top-ranked TB drug targets")
+    ax.set_xlim(0, max(values) + 0.06)
+    annotate_horizontal_bars(ax, values)
     save(fig, "figure_2_target_ranking.png")
 
 
 def figure_mdr_patterns() -> None:
-    df = pd.read_csv(OUTPUTS / "epi" / "mdr_patterns.csv").sort_values("Latest_MDR_Pct", ascending=False)
-    fig, ax = plt.subplots(figsize=(9, 5))
-    ax.bar(df["Region"], df["Latest_MDR_Pct"], color="#dc2626")
-    ax.set_ylabel("Latest MDR-TB %")
+    df = pd.read_csv(OUTPUTS / "epi" / "mdr_patterns.csv").sort_values("Latest_MDR_Pct", ascending=False).iloc[::-1]
+    fig, ax = plt.subplots(figsize=(8.8, 5.6))
+    values = df["Latest_MDR_Pct"].tolist()
+    ax.barh(df["Region"], values, color="#dc2626")
+    ax.set_xlabel("Latest MDR-TB %")
     ax.set_title("Figure 3. Regional MDR-TB burden patterns")
-    ax.tick_params(axis="x", rotation=45)
+    ax.set_xlim(0, max(values) + 1.0)
+    annotate_horizontal_bars(ax, values, fmt="{:.1f}")
     save(fig, "figure_3_mdr_patterns.png")
 
 
 def figure_pathways() -> None:
     df = pd.read_csv(OUTPUTS / "omics" / "pathway_scores.csv").head(8).sort_values("Enrichment_Score", ascending=True)
-    fig, ax = plt.subplots(figsize=(9, 5))
-    ax.barh(df["Pathway"], df["Enrichment_Score"], color="#059669")
+    fig, ax = plt.subplots(figsize=(9, 5.6))
+    values = df["Enrichment_Score"].tolist()
+    ax.barh(df["Pathway"], values, color="#059669")
     ax.set_xlabel("Enrichment score")
     ax.set_title("Figure 4. Top enriched pathways in the omics module")
+    ax.set_xlim(0, max(values) + 0.6)
+    annotate_horizontal_bars(ax, values)
     save(fig, "figure_4_pathways.png")
 
 
 def figure_docking() -> None:
-    df = pd.read_csv(OUTPUTS / "docking" / "docking_results_InhA.csv").head(10).sort_values("Binding_Affinity_kcal_mol", ascending=True)
-    fig, ax = plt.subplots(figsize=(9, 5))
-    ax.barh(df["Compound_ID"], df["Binding_Affinity_kcal_mol"], color="#7c3aed")
+    df = pd.read_csv(OUTPUTS / "docking" / "docking_results_InhA.csv").sort_values("Binding_Affinity_kcal_mol", ascending=True).head(10)
+    fig, ax = plt.subplots(figsize=(9, 5.6))
+    values = df["Binding_Affinity_kcal_mol"].tolist()
+    ax.barh(df["Compound_ID"], values, color="#7c3aed")
     ax.set_xlabel("Binding affinity (kcal/mol)")
     ax.set_title("Figure 5. Top docking hits against InhA")
+    ax.set_xlim(min(values) - 0.5, 0)
+    annotate_horizontal_bars(ax, values)
     save(fig, "figure_5_docking_hits.png")
 
 
@@ -137,7 +166,7 @@ def figure_lead_profile() -> None:
     qm_row = qm.iloc[0]
     poly_row = poly.iloc[0]
 
-    labels = ["QED", "1-Tanimoto", "RMSD score", "H-bonds/5", "Band gap/5"]
+    labels = ["QED", "1-Tanimoto", "RMSD\nscore", "H-bonds/5", "Band gap/5"]
     values = [
         float(lead["QED_Drug_Likeness"]),
         1 - float(poly_row["Max_Tanimoto_to_Human_Toxin"]),
@@ -151,7 +180,7 @@ def figure_lead_profile() -> None:
     ax.set_ylim(0, 1.05)
     ax.set_ylabel("Scaled lead-profile score")
     ax.set_title("Figure 7. Integrated computational profile of MDR_AI_030")
-    ax.tick_params(axis="x", rotation=20)
+    annotate_vertical_bars(ax, values)
     save(fig, "figure_7_lead_profile.png")
 
 
