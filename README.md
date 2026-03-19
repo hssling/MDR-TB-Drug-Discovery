@@ -12,7 +12,7 @@ pinned: false
 
 An end-to-end computational platform for multidrug-resistant tuberculosis drug discovery, resistance-aware target prioritization, generative chemistry, structural screening, and automated research-document generation.
 
-This project combines data ingestion, target scoring, docking, post-docking triage, machine learning, manuscript generation, Hugging Face interaction, and Kaggle-ready packaging in one reproducible workflow.
+This project combines data ingestion, target scoring, docking, post-docking triage, machine learning, manuscript generation, Hugging Face challenge deployment, and Kaggle-oriented dataset packaging in one reproducible workflow.
 
 ---
 
@@ -47,8 +47,8 @@ MDR-TB remains a major therapeutic challenge. This repository is designed to hel
 
 ### Community and Deployment Hooks
 
-- **Hugging Face interactive challenge Space** in `challenges/huggingface/app.py`
-- **Kaggle challenge starter assets** in `challenges/kaggle/`
+- **Hugging Face challenge prototype** in `challenges/huggingface/app.py`
+- **Kaggle challenge and starter assets** in `challenges/kaggle/`
 - **Dashboards** in `dashboards/`
 
 ---
@@ -87,7 +87,7 @@ Outputs are written under `outputs/`.
 docker-compose up --build
 ```
 
-This can expose the dashboards on local ports such as `8501` and `8502`, depending on how you launch the services.
+This launches the pipeline plus two Streamlit dashboards exposed on `8501` and `8502` via `docker-compose.yml`.
 
 ---
 
@@ -121,15 +121,21 @@ This repository is configured to support a Hugging Face Space using the metadata
 ### Included Space Capability
 
 - **Interactive SMILES challenge app** via `challenges/huggingface/app.py`
-- **Gradio-based evaluation flow** for user-submitted compounds
+- **Gradio-based prototype evaluation flow** for user-submitted compounds
 - **Public-facing demonstration layer** for sharing the project beyond the codebase
 
 ### Intended Hugging Face Use
 
 - demo the project interactively;
 - let users explore the compound challenge interface;
-- showcase the computational drug-discovery narrative; and
-- provide an accessible front end for community engagement.
+- showcase the broader computational drug-discovery narrative; and
+- provide a lightweight public engagement front end.
+
+### Current Space Limitations
+
+- the Space app is a challenge/demo layer, not the full pipeline UI;
+- it evaluates user SMILES with a lightweight ChemBERTa-based flow rather than rerunning the full docking pipeline; and
+- it should be interpreted as an interactive outreach component, not a scientific validation interface.
 
 ---
 
@@ -159,6 +165,10 @@ python scripts/prepare_release_bundle.py --output-dir release_bundle
 kaggle datasets version -p release_bundle --dir-mode zip -m "Update dataset"
 ```
 
+### Current CI Behavior
+
+The repository CI workflow in `.github/workflows/ci.yml` currently deploys Kaggle from the repository root with `--dir-mode zip`. The clean-bundle script above is the recommended manual publishing path when you want a tidier public dataset.
+
 ---
 
 ## Challenges and Competitions
@@ -167,7 +177,7 @@ This repository includes public-facing challenge components intended to stimulat
 
 ### Hugging Face Challenge
 
-Located in `challenges/huggingface/app.py`, this interactive app lets users submit candidate SMILES strings and compare them conceptually against the internal pipeline lead.
+Located in `challenges/huggingface/app.py`, this interactive app lets users submit candidate SMILES strings and compare them conceptually against the internal pipeline lead through a lightweight challenge interface.
 
 ### Kaggle Challenge Assets
 
