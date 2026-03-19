@@ -27,25 +27,49 @@ def save(fig: plt.Figure, name: str) -> None:
 
 def figure_workflow() -> None:
     steps = [
-        "Data loading",
-        "Omics + epidemiology",
-        "Resistance mapping",
-        "Target ranking",
-        "De novo generation",
-        "Docking + ranking",
-        "ADMET / MD / QM / polypharm",
-        "Retrosynthesis + manuscript",
+        "Data\nloading",
+        "Omics +\nepidemiology",
+        "Resistance\nmapping",
+        "Target\nranking",
+        "De novo\nchemistry",
+        "Docking +\ncompound ranking",
+        "ADMET / MD /\nQM / off-target",
+        "Retrosynthesis +\nmanuscript outputs",
     ]
-    fig, ax = plt.subplots(figsize=(12, 4))
+    fig, ax = plt.subplots(figsize=(12, 6))
     ax.axis("off")
-    x_positions = [0.02, 0.14, 0.27, 0.39, 0.52, 0.64, 0.77, 0.90]
-    for x, label in zip(x_positions, steps):
-        box = FancyBboxPatch((x - 0.055, 0.35), 0.11, 0.28, boxstyle="round,pad=0.02", facecolor="#dbeafe", edgecolor="#1d4ed8", linewidth=1.5)
+    positions = [
+        (0.12, 0.72),
+        (0.37, 0.72),
+        (0.62, 0.72),
+        (0.87, 0.72),
+        (0.12, 0.28),
+        (0.37, 0.28),
+        (0.62, 0.28),
+        (0.87, 0.28),
+    ]
+    for (x, y), label in zip(positions, steps):
+        box = FancyBboxPatch(
+            (x - 0.095, y - 0.09),
+            0.19,
+            0.18,
+            boxstyle="round,pad=0.02",
+            facecolor="#dbeafe",
+            edgecolor="#1d4ed8",
+            linewidth=1.5,
+        )
         ax.add_patch(box)
-        ax.text(x, 0.49, label, ha="center", va="center", fontsize=10, wrap=True)
-    for start, end in zip(x_positions[:-1], x_positions[1:]):
-        ax.annotate("", xy=(end - 0.07, 0.49), xytext=(start + 0.07, 0.49), arrowprops=dict(arrowstyle="->", lw=1.8, color="#1f2937"))
-    ax.set_title("Figure 1. Computational workflow for MDR-TB lead prioritization", fontsize=14, weight="bold")
+        ax.text(x, y, label, ha="center", va="center", fontsize=10, weight="bold")
+
+    top = positions[:4]
+    bottom = positions[4:]
+    for start, end in zip(top[:-1], top[1:]):
+        ax.annotate("", xy=(end[0] - 0.11, end[1]), xytext=(start[0] + 0.11, start[1]), arrowprops=dict(arrowstyle="->", lw=1.8, color="#1f2937"))
+    ax.annotate("", xy=(bottom[0][0], bottom[0][1] + 0.12), xytext=(top[-1][0], top[-1][1] - 0.12), arrowprops=dict(arrowstyle="->", lw=1.8, color="#1f2937", connectionstyle="arc3,rad=-0.35"))
+    for start, end in zip(bottom[:-1], bottom[1:]):
+        ax.annotate("", xy=(end[0] - 0.11, end[1]), xytext=(start[0] + 0.11, start[1]), arrowprops=dict(arrowstyle="->", lw=1.8, color="#1f2937"))
+
+    ax.set_title("Figure 1. Computational workflow for MDR-TB lead prioritization", fontsize=15, weight="bold", pad=14)
     save(fig, "figure_1_workflow.png")
 
 
