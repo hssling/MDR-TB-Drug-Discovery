@@ -98,15 +98,15 @@ All values reported in this manuscript were checked against saved CSV and JSON o
 
 The omics module identified 426 significant differential-expression events across 5,000 genes. The top five exported pathway scores were `mtu00010_Glycolysis` (8.6509), `mtu00020_TCA_cycle` (3.7137), `mtu00190_Oxidative_phosphorylation` (2.9899), `mtu00230_Purine_metabolism` (2.8079), and `mtu00240_Pyrimidine_metabolism` (2.4112). These outputs define the dominant metabolic signal within the current computational run and provide a disease-context backdrop for downstream prioritization.
 
-![Figure 4. Top enriched pathways in the omics module](../figures/figure_4_pathways.png)
+![Figure 2. Top enriched pathways in the omics module](../figures/figure_2_pathways.png)
 
-*Figure 4. Top enriched pathways from the omics module, highlighting glycolysis and related metabolic processes in the current computational run.*
+*Figure 2. Top enriched pathways from the omics module, highlighting glycolysis and related metabolic processes in the current computational run.*
 
 The epidemiology summary contextualized these results within a region-level trend analysis covering 2015-2023. The overall incidence trend was reported as decreasing, whereas the MDR-TB trend was rising. The exported epidemiology summary identified Rajasthan as the highest overall burden region, whereas the MDR-specific pattern table showed the highest latest MDR-TB percentage in Madhya Pradesh. The mean MDR-TB proportion across the analyzed regional set was 8.75%. Although these values are not used as causal inputs to compound-level scoring, they reinforce the rationale for emphasizing resistance-aware discovery.
 
-![Figure 2. Regional MDR-TB burden patterns](../figures/figure_3_mdr_patterns.png)
+![Figure 3. Regional MDR-TB burden patterns](../figures/figure_3_mdr_patterns.png)
 
-*Figure 2. Regional MDR-TB burden patterns derived from the epidemiology module, showing latest MDR-TB percentage across analyzed regions.*
+*Figure 3. Regional MDR-TB burden patterns derived from the epidemiology module, showing latest MDR-TB percentage across analyzed regions.*
 
 ### 3.2 Resistance scoring and target prioritization
 
@@ -114,9 +114,9 @@ The resistance module covered 10 genes, 40 cataloged mutations, and 10 drugs, wi
 
 Target prioritization identified InhA as the top-ranked target with final score 0.8695. Other highly ranked targets included RpoB, GyrA, EmbB, and Rrs. The top target list is shown in Table 1.
 
-![Figure 3. Top-ranked TB drug targets](../figures/figure_2_target_ranking.png)
+![Figure 4. Top-ranked TB drug targets](../figures/figure_4_target_ranking.png)
 
-*Figure 3. Horizontal ranking of the top prioritized TB drug targets based on the exported multi-factor scoring table.*
+*Figure 4. Horizontal ranking of the top prioritized TB drug targets based on the exported multi-factor scoring table.*
 
 **Table 1. Top-ranked targets in the current run**
 
