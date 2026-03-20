@@ -92,7 +92,7 @@ class ManuscriptGenerator:
             "resistance_scores": self._read_csv("resistance/resistance_scores.csv"),
             "pathways": self._read_csv("omics/pathway_scores.csv"),
         }
-        ranking_top = context["ranking"].get("top_compound", "MDR_AI_030")
+        ranking_top = context["ranking"].get("top_compound", "CHEMBL3125270")
         context["top_docking"] = context["docking"].iloc[0].to_dict() if not context["docking"].empty else {}
         top_admet = context["admet"][context["admet"].get("Compound_ID", pd.Series(dtype=str)) == ranking_top]
         context["top_admet"] = top_admet.iloc[0].to_dict() if not top_admet.empty else {}
@@ -105,7 +105,7 @@ class ManuscriptGenerator:
     def _main_manuscript(self, context: dict) -> str:
         top_target = context["targets"].get("top_target", "InhA")
         top_target_score = context["targets"].get("top_score", 0)
-        top_compound = context["ranking"].get("top_compound", "MDR_AI_030")
+        top_compound = context["ranking"].get("top_compound", "CHEMBL3125270")
         top_rank_score = context["ranking"].get("top_score", 0)
         docking_score = context["top_docking"].get("Binding_Affinity_kcal_mol", "NA")
         rmsd = context["top_md"].get("RMSD_nm", "NA")

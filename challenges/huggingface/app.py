@@ -2,9 +2,12 @@
 Hugging Face Challenge: MDR-TB Generative Designer Space
 ========================================================
 Interactive user interface challenging global researchers to "Beat the Pipeline".
-Users paste their own SMILES string, or manipulate our fragments, to attempt
-to generate an InhA inhibitor surpassing our pipeline's MDR_AI_030 (-9.77 kcal/mol)
-without triggering Lipinski Rules of Five penalties!
+Users paste their own SMILES string to attempt to generate an InhA inhibitor
+surpassing our pipeline's top compound CHEMBL3125270 (IC50 = 4 nM, measured from ChEMBL1849)
+without triggering Lipinski Rules of Five penalties.
+
+Note: The reference compound CHEMBL3125270 is a real experimentally measured InhA inhibitor
+from ChEMBL1849, not a computationally generated compound.
 """
 
 import gradio as gr
@@ -70,7 +73,7 @@ demo = gr.Interface(
     inputs=gr.Textbox(lines=3, placeholder="Paste a SMILES string here (e.g., C(F)(F)F-C#C-c1...)", label="Your Invented TB Drug"),
     outputs=gr.Textbox(label="AI Leaderboard Arbitrator Result", lines=8),
     title="MDR-TB Generative Designer Challenge",
-    description="Can you beat our internal AI Pipeline (MDR_AI_030)? Engineer a chemical string mapping to the InhA active site targeting the `katG S315T` resistance pathway! Make sure your drug doesn't violate Lipinski rules."
+    description="Can you beat our pipeline's top compound CHEMBL3125270 (IC50 = 4 nM, from ChEMBL1849)? Engineer a chemical string mapping to the InhA active site targeting the katG S315T resistance pathway. Make sure your drug doesn't violate Lipinski rules."
 )
 
 if __name__ == "__main__":

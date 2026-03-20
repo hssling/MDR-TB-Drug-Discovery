@@ -1,19 +1,24 @@
 {
-  "n_compounds_ranked": 55,
-  "top_compound": "MDR_AI_030",
-  "top_score": 0.736,
+  "n_compounds_ranked": 277,
+  "n_compounds_in_top10": 10,
+  "top_compound": "CHEMBL3125270",
+  "top_compound_IC50_nM": 4.0,
+  "top_compound_composite_score": 0.8245,
   "top_10_ids": [
-    "MDR_AI_030",
-    "MDR_AI_048",
-    "MDR_AI_039",
-    "MDR_AI_047",
-    "MDR_AI_046",
-    "MDR_AI_029",
-    "MDR_AI_007",
-    "MDR_AI_031",
-    "MDR_AI_049",
-    "MDR_AI_005"
+    "CHEMBL3125270",
+    "CHEMBL3125104",
+    "CHEMBL3125266",
+    "CHEMBL3088173",
+    "CHEMBL3088172",
+    "CHEMBL3125276",
+    "CHEMBL3125235",
+    "CHEMBL3125259",
+    "CHEMBL3125101",
+    "CHEMBL3125261"
   ],
-  "mean_rank_score": 0.6016,
-  "n_high_priority": 0
+  "mean_composite_score_top10": 0.8107,
+  "scoring_method": "Composite: 0.40*pIC50_norm + 0.30*QSAR_Active_Prob + 0.20*LBVS_Tanimoto + 0.10*QED",
+  "data_source": "ChEMBL1849 — real measured IC50 values (not predicted); ADMET computed with RDKit 2024; QSAR: Logistic Regression on Morgan ECFP4 fingerprints trained on 277 compounds",
+  "target": "InhA (Rv1484, CHEMBL1849), Mycobacterium tuberculosis H37Rv",
+  "note": "All IC50 values experimentally measured and retrieved from ChEMBL REST API. No synthetic or randomly generated data."
 }

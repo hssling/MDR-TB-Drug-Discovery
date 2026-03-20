@@ -54,5 +54,8 @@ class QMMM_Engine:
         return q_results
 
 if __name__ == "__main__":
+    # NOTE: This engine is DEPRECATED. It produces heuristic estimates falsely labeled as DFT.
+    # No actual QM calculations are performed. Engine is not used in the genuine workflow.
+    # See outputs/quantum_mechanics/electronic_orbitals.csv for retraction notice.
     qm = QMMM_Engine()
-    print(qm.run('c1ccccc1-C#C-c1cc(cc(c1)C(F)(F)F)-C#C-C(F)(F)F')) # MDR_AI_030
+    print(qm.run('CCc1cc(C(=O)N[C@@H]2C[C@@H](C(N)=O)N(C(=O)c3coc4ccccc34)C2)n(CC)n1'))  # CHEMBL3125270 (example only)

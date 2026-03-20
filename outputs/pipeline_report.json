@@ -1,7 +1,168 @@
 {
-  "elapsed_seconds": 32.5,
-  "phases_completed": 19,
-  "phases_total": 19,
-  "errors": [],
-  "status": "SUCCESS"
+  "pipeline": "Genuine MDR-TB Drug Discovery Pipeline",
+  "generated": "2025 \u2014 genuine_drug_discovery.py",
+  "integrity_statement": "All values in this pipeline are derived from: (a) published peer-reviewed literature with explicit citations, (b) real ChEMBL database API calls (measured IC50 values), (c) real RCSB PDB structure downloads, or (d) RDKit computational chemistry (open-source, reproducible). No synthetic/random data was generated for scientific values.",
+  "steps_completed": {
+    "1_epidemiology": {
+      "status": "complete",
+      "sources": [
+        "WHO Global TB Report 2023",
+        "India TB Report 2023 (CTD MoHFW)"
+      ],
+      "output": "D:\\research-automation\\TB multiomics\\MDR TB Drug Discovery\\outputs\\epi"
+    },
+    "2_resistance": {
+      "status": "complete",
+      "sources": [
+        "CRyPTIC Consortium PLoS Biol 2022 (DOI:10.1371/journal.pbio.3001755)"
+      ],
+      "output": "D:\\research-automation\\TB multiomics\\MDR TB Drug Discovery\\outputs\\resistance"
+    },
+    "3_target_scoring": {
+      "status": "complete",
+      "n_targets": 10,
+      "top_target": "InhA",
+      "top_score": 0.937,
+      "sources": "Literature-curated (TnSeq, crystallography, CRyPTIC)",
+      "output": "D:\\research-automation\\TB multiomics\\MDR TB Drug Discovery\\outputs\\targets"
+    },
+    "4_chembl_compounds": {
+      "status": "complete",
+      "chembl_target": "CHEMBL1849 (InhA/enoyl-ACP reductase, MTB)",
+      "n_compounds": 277,
+      "ic50_range_nM": [
+        2.0,
+        291000.0
+      ],
+      "output": "D:\\research-automation\\TB multiomics\\MDR TB Drug Discovery\\outputs\\compounds"
+    },
+    "5_admet": {
+      "status": "complete",
+      "n_compounds": 277,
+      "method": "RDKit Descriptors, QED, Lipinski, TPSA",
+      "output": "D:\\research-automation\\TB multiomics\\MDR TB Drug Discovery\\outputs\\admet"
+    },
+    "6_qsar": {
+      "status": "complete",
+      "metrics": {
+        "best_model": "LogisticRegression",
+        "best_test_ROC_AUC": 0.9612,
+        "n_compounds": 277,
+        "n_active": 108,
+        "n_inactive": 169,
+        "label_threshold_nM": 1000,
+        "fingerprint": "Morgan ECFP4 radius=2 nBits=2048",
+        "cv_folds": 5,
+        "split": "80/20 stratified",
+        "limitations": [
+          "Model trained on InhA biochemical assay data (not whole-cell activity)",
+          "Applicability domain not formally assessed",
+          "External validation on independent dataset not performed",
+          "Class imbalance may affect recall for minority class"
+        ],
+        "all_models": [
+          {
+            "Model": "RandomForest",
+            "CV_ROC_AUC_mean": 0.9328,
+            "CV_ROC_AUC_std": 0.0541,
+            "CV_F1_mean": 0.7915,
+            "CV_Accuracy_mean": 0.8553,
+            "Test_ROC_AUC": 0.9318,
+            "Test_F1": 0.7568,
+            "Test_Accuracy": 0.8393,
+            "Test_Precision": 0.9333,
+            "Test_Recall": 0.6364,
+            "Train_N": 221,
+            "Test_N": 56,
+            "Active_N": 108,
+            "Inactive_N": 169,
+            "Label_definition": "IC50 < 1000 nM = active",
+            "Features": "Morgan ECFP4 fingerprints (radius=2, 2048 bits)",
+            "Method": "Scikit-learn; 5-fold stratified CV + 80/20 holdout; all metrics computed on real ChEMBL IC50 data",
+            "Source": "Real IC50 data from ChEMBL1849 (https://www.ebi.ac.uk/chembl/target_report_card/CHEMBL1849/)"
+          },
+          {
+            "Model": "GradientBoosting",
+            "CV_ROC_AUC_mean": 0.8967,
+            "CV_ROC_AUC_std": 0.0739,
+            "CV_F1_mean": 0.8121,
+            "CV_Accuracy_mean": 0.8597,
+            "Test_ROC_AUC": 0.9412,
+            "Test_F1": 0.8,
+            "Test_Accuracy": 0.8571,
+            "Test_Precision": 0.8889,
+            "Test_Recall": 0.7273,
+            "Train_N": 221,
+            "Test_N": 56,
+            "Active_N": 108,
+            "Inactive_N": 169,
+            "Label_definition": "IC50 < 1000 nM = active",
+            "Features": "Morgan ECFP4 fingerprints (radius=2, 2048 bits)",
+            "Method": "Scikit-learn; 5-fold stratified CV + 80/20 holdout; all metrics computed on real ChEMBL IC50 data",
+            "Source": "Real IC50 data from ChEMBL1849 (https://www.ebi.ac.uk/chembl/target_report_card/CHEMBL1849/)"
+          },
+          {
+            "Model": "LogisticRegression",
+            "CV_ROC_AUC_mean": 0.9061,
+            "CV_ROC_AUC_std": 0.0648,
+            "CV_F1_mean": 0.8138,
+            "CV_Accuracy_mean": 0.8598,
+            "Test_ROC_AUC": 0.9612,
+            "Test_F1": 0.8205,
+            "Test_Accuracy": 0.875,
+            "Test_Precision": 0.9412,
+            "Test_Recall": 0.7273,
+            "Train_N": 221,
+            "Test_N": 56,
+            "Active_N": 108,
+            "Inactive_N": 169,
+            "Label_definition": "IC50 < 1000 nM = active",
+            "Features": "Morgan ECFP4 fingerprints (radius=2, 2048 bits)",
+            "Method": "Scikit-learn; 5-fold stratified CV + 80/20 holdout; all metrics computed on real ChEMBL IC50 data",
+            "Source": "Real IC50 data from ChEMBL1849 (https://www.ebi.ac.uk/chembl/target_report_card/CHEMBL1849/)"
+          }
+        ],
+        "Source": "RDKit + scikit-learn; real ChEMBL IC50 data"
+      },
+      "output": "D:\\research-automation\\TB multiomics\\MDR TB Drug Discovery\\outputs\\models"
+    },
+    "7_pdb_download": {
+      "status": "complete",
+      "pdb_id": "4TZK",
+      "resolution": "1.65 Angstrom",
+      "url": "https://files.rcsb.org/download/4TZK.pdb"
+    },
+    "8_virtual_screening": {
+      "status": "complete",
+      "method": "Ligand-Based Virtual Screening (LBVS)",
+      "details": "Tanimoto similarity (Morgan ECFP4) to 4 known InhA inhibitors + pharmacophore feature matching. AutoDock Vina not used \u2014 binary not pre-installed.",
+      "output": "D:\\research-automation\\TB multiomics\\MDR TB Drug Discovery\\outputs\\docking"
+    },
+    "9_ranking": {
+      "status": "complete",
+      "n_compounds_ranked": 263,
+      "scoring_formula": "0.40*pIC50_norm + 0.30*QSAR_prob + 0.20*LBVS + 0.10*QED",
+      "output": "D:\\research-automation\\TB multiomics\\MDR TB Drug Discovery\\outputs\\ranking"
+    }
+  },
+  "key_limitations": [
+    "No molecular dynamics simulations (computationally infeasible without GPU cluster)",
+    "No DFT/quantum mechanical calculations performed",
+    "AutoDock Vina structure-based docking not performed (binary not installed)",
+    "QSAR model trained only on InhA biochemical assay data \u2014 whole-cell activity may differ",
+    "ADMET predictions are rule-based proxies (Lipinski/Veber/Clark), not PBPK models",
+    "LBVS similarity scores are NOT binding affinities \u2014 cannot substitute for experimental data"
+  ],
+  "references": [
+    "[1] WHO Global Tuberculosis Report 2023. https://www.who.int/publications/i/item/9789240083851",
+    "[2] Central TB Division, MoHFW. India TB Report 2023. https://www.tbcindia.gov.in/",
+    "[3] CRyPTIC Consortium. PLoS Biol 2022; 20(8):e3001755. DOI:10.1371/journal.pbio.3001755",
+    "[4] Banerjee A et al. Science 1994; 263(5144):227-30 (inhA target identification)",
+    "[5] Campbell EA et al. Cell 2001; 104(6):901-12 (RpoB-rifampicin mechanism)",
+    "[6] Andries K et al. Science 2005; 307(5707):223-7 (AtpE-bedaquiline)",
+    "[7] DeJesus MA et al. mBio 2017 (TnSeq essentiality)",
+    "[8] Ward WH et al. Biochemistry 1999; 38(38):12514-25 (triclosan-InhA)",
+    "[9] Freundlich JS et al. J Med Chem 2009; 52(13):3987-96 (PT70 InhA inhibitor)",
+    "[10] Willett P et al. J Chem Inf Comput Sci 1998 (Tanimoto similarity in LBVS)"
+  ]
 }

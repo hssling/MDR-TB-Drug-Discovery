@@ -33,10 +33,11 @@ class MolecularDynamicsEngine:
         time.sleep(1) # Simulating parameterized physics check
         print("  [MD Engine] Solvating complex in dynamic theoretical periodic volume...")
         
-        # MOCKED RESULTS FOR CI/CD COMPATIBILITY
-        # We assume MDR_AI_030 maintains stability based on extreme docked affinity (-9.77 kcal/mol)
-        rms_deviation = 0.12 # Nanometers (highly stable)
-        hydrogen_bonds = 4   # Persistent H-bonds over 10ns
+        # NOTE: This engine is DEPRECATED. All values below are hardcoded fabrications.
+        # No actual MD simulation was performed. This engine is not used in the genuine workflow.
+        # See outputs/md_simulations/md_summary.csv for retraction notice.
+        rms_deviation = 0.12 # FABRICATED — hardcoded regardless of compound
+        hydrogen_bonds = 4   # FABRICATED — hardcoded regardless of compound HBD/HBA
         water_bridges = 2
         
         result_dict = {
