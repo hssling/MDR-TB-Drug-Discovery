@@ -1,8 +1,35 @@
 {
-  "n_regions": 10,
-  "year_range": "2015-2023",
-  "overall_incidence_trend": "Decreasing",
-  "overall_mdr_trend": "Rising",
-  "highest_burden_region": "Rajasthan",
-  "national_mean_mdr_pct": 8.75
+  "generated_by": "genuine_drug_discovery.py",
+  "data_sources": [
+    "WHO Global Tuberculosis Report 2023 (https://www.who.int/publications/i/item/9789240083851)",
+    "India TB Report 2023, Central TB Division, MoHFW India (https://www.tbcindia.gov.in/)"
+  ],
+  "national_statistics": {
+    "source": "WHO Global Tuberculosis Report 2023, Annex 2 (Table A2.1)",
+    "citation": "[1] WHO Global TB Report 2023. https://www.who.int/publications/i/item/9789240083851",
+    "year_of_data": 2022,
+    "india_tb_incidence_per_100k": 212,
+    "india_tb_incidence_total_thousands": 2800,
+    "india_mdr_tb_estimated_cases": 119000,
+    "india_mdr_tb_notified": 66432,
+    "india_mdr_treatment_success_pct": 59,
+    "global_tb_incidence_millions": 7.5,
+    "global_mdr_tb_cases": 410000,
+    "india_share_of_global_tb_pct": 27,
+    "hiv_positive_tb_india_pct": 2.1
+  },
+  "highest_burden_states": [
+    "Uttar Pradesh",
+    "Maharashtra",
+    "Bihar",
+    "West Bengal",
+    "Rajasthan"
+  ],
+  "n_states_analyzed": 10,
+  "key_findings": [
+    "India accounts for 27% of global TB burden (WHO 2023)",
+    "MDR-TB treatment success rate remains at 59% for 2019 cohort (WHO 2023)",
+    "119,000 estimated MDR-TB cases in India 2022 (WHO 2023)",
+    "New drug targets urgently needed given suboptimal treatment outcomes"
+  ]
 }

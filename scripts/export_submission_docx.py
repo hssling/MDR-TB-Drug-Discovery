@@ -180,7 +180,7 @@ def main() -> None:
 
     root = Path(__file__).resolve().parent.parent
     output_dir = root / args.output_dir
-    manuscript_md = root / "outputs" / "manuscript" / "manuscript_v7_final.md"
+    manuscript_md = root / "outputs" / "manuscript" / "manuscript_v8_genuine.md"
     supplementary_md = root / "outputs" / "manuscript" / "supplementary_materials.md"
 
     manuscript_title = strip_markdown(manuscript_md.read_text(encoding="utf-8").splitlines()[0].lstrip("# ").strip())

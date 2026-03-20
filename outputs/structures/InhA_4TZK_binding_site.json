@@ -1,0 +1,37 @@
+{
+  "pdb_id": "4TZK",
+  "resolution_angstrom": 1.65,
+  "citation": "Dias MVB et al. J Biol Chem 2014; PDB 4TZK",
+  "rcsb_url": "https://www.rcsb.org/structure/4TZK",
+  "active_site_residues": {
+    "catalytic": [
+      "Tyr158"
+    ],
+    "NAD_binding": [
+      "Gly192",
+      "Gly14",
+      "Ile16",
+      "Thr17",
+      "Thr19",
+      "Phe41",
+      "Arg46",
+      "Asp148",
+      "Lys165"
+    ],
+    "substrate_binding": [
+      "Phe149",
+      "Met161",
+      "Ile194",
+      "Ile215",
+      "Ile202",
+      "Leu218",
+      "Ala198",
+      "Met199",
+      "Thr196",
+      "Ser94"
+    ]
+  },
+  "cofactor": "NAD+ (essential; inhibitors that span NAD+ and substrate pocket are most potent)",
+  "inhibitor_design_note": "Key pharmacophore: H-bond to Tyr158 (catalytic), interactions with Phe149/Met161 hydrophobic pocket, mimicry of NAD+ nicotinamide. Triclosan and isoniazid-NAD adduct as references.",
+  "source": "Dias MVB et al. J Biol Chem 2014; Banerjee A Science 1994"
+}
