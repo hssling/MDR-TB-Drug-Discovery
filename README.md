@@ -231,10 +231,112 @@ For public pushes:
 
 ---
 
+---
+
+## Drug Discovery Agent (AI-Powered, Disease-Agnostic)
+
+A fully autonomous, Claude-orchestrated agent for end-to-end computational drug discovery — for **any disease**, not just TB. Give it a natural-language prompt; it searches real databases, computes ADMET properties, trains QSAR models, ranks compounds, and writes a full report.
+
+### Why This Agent?
+
+All results come exclusively from real, published data (ChEMBL, PubChem, PDB, EuropePMC/PubMed). Built-in guardrails reject fabricated data, missing citations, and low-confidence results at every step.
+
+### Quick Start
+
+```bash
+# Install agent dependencies
+pip install -r requirements_agent.txt
+
+# Set your Anthropic API key
+export ANTHROPIC_API_KEY=sk-ant-...   # or copy .env.example → .env
+
+# Run a drug discovery task
+python -m agent "Find novel DprE1 inhibitors for drug-resistant tuberculosis"
+python -m agent "Identify EGFR kinase inhibitors for lung cancer"
+python -m agent "Discover ACE2 inhibitors for COVID-19"
+python -m agent "Find PfDHFR inhibitors for malaria"
+```
+
+Reports are saved to `outputs/agent_runs/<run_id>/` as `report.md`, `report.json`, and `compounds.csv`.
+
+### Available Tools (12)
+
+| Tool | Source | Description |
+|------|--------|-------------|
+| `search_chembl_target` | ChEMBL | Find protein targets by name/organism |
+| `fetch_chembl_activities` | ChEMBL | Retrieve IC50/Ki/Kd bioactivity data |
+| `get_chembl_compound` | ChEMBL | Full molecule record (SMILES, drug status) |
+| `search_pubchem_compound` | PubChem | Search compounds by name or CID |
+| `get_pubchem_bioassays` | PubChem | BioAssay activity summary for a CID |
+| `search_pdb_structure` | RCSB PDB | Find protein structures by name |
+| `download_pdb_structure` | RCSB PDB | Download PDB file + extract metadata |
+| `search_literature` | EuropePMC | Search peer-reviewed publications |
+| `fetch_paper_details` | EuropePMC | Full abstract + metadata by PMID/DOI |
+| `compute_admet` | RDKit (local) | MW, cLogP, TPSA, QED, Lipinski, hERG |
+| `train_qsar_model` | RDKit + scikit-learn | Binary classifier on ECFP4 fingerprints |
+| `rank_compounds` | RDKit (local) | Composite score: pIC50 + LBVS + QED + Lipinski |
+
+### MCP Server (Claude Desktop / Cursor Integration)
+
+```bash
+# stdio transport (Claude Desktop)
+python -m agent.mcp
+
+# HTTP transport (web MCP clients)
+python -m agent.mcp --http --port 8765
+```
+
+**Claude Desktop config** (`claude_desktop_config.json`):
+```json
+{
+  "mcpServers": {
+    "drug-discovery": {
+      "command": "python",
+      "args": ["-m", "agent.mcp"],
+      "cwd": "<path to this repo>"
+    }
+  }
+}
+```
+
+### CLI Options
+
+```
+python -m agent "prompt" [--model MODEL] [--max-iterations N] [--output-dir DIR] [--quiet]
+```
+
+| Flag | Default | Description |
+|------|---------|-------------|
+| `--model` | `claude-sonnet-4-6` | Claude model ID |
+| `--max-iterations` | 25 | Agentic loop cap |
+| `--output-dir` | `outputs/agent_runs` | Report output directory |
+| `--quiet` | off | Suppress per-tool progress |
+
+### Python API
+
+```python
+from agent import DrugDiscoveryAgent, AgentConfig
+
+cfg = AgentConfig.from_env()
+agent = DrugDiscoveryAgent(config=cfg)
+report = agent.run("Find InhA inhibitors for MDR-TB")
+report.print_summary()
+# Access: report.top_compounds, report.report_path, report.metadata
+```
+
+### Guardrails
+
+Every tool result is validated before being returned to Claude:
+
+- **Hard failures**: missing citations on success, confidence outside [0, 1], fabrication patterns (random/mock data), success=False with no error message
+- **Soft warnings**: confidence < 0.30, small training datasets (< 50 compounds)
+
+---
+
 ## Contact
 
-**Dr Siddalingaiah H S**  
-Professor, Community Medicine  
-Shridevi Institute of Medical Sciences and Research Hospital, Tumkur  
-Email: `hssling@yahoo.com`  
+**Dr Siddalingaiah H S**
+Professor, Community Medicine
+Shridevi Institute of Medical Sciences and Research Hospital, Tumkur
+Email: `hssling@yahoo.com`
 ORCID: `0000-0002-4771-8285`

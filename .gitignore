@@ -1,3 +1,10 @@
 *.zip
 *.csv
 release_bundle*/
+
+# Environment secrets — never commit
+.env
+.env.local
+__pycache__/
+*.py[cod]
+.pytest_cache/
