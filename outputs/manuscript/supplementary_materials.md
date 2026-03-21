@@ -17,7 +17,8 @@ All bioactivity data were retrieved via the ChEMBL REST API (chembl-webresource-
 | Total compounds retrieved | 277 |
 | Active (IC50 < 1000 nM) | 108 |
 | Inactive (IC50 >= 1000 nM) | 169 |
-| IC50 range | 0.4 nM – 500,000 nM |
+| IC50 range (pre-filter, all retrieved) | 0.4 nM – 500,000 nM |
+| IC50 range (post drug-likeness filter) | 2 nM – 291,000 nM |
 | Median IC50 (active set) | 38 nM |
 | Data source | https://www.ebi.ac.uk/chembl/target_report_card/CHEMBL1849/ |
 
@@ -37,7 +38,7 @@ Training set n=221; test set n=56. Label definition: IC50 < 1000 nM = active.
 
 ## S3. Top 10 Ranked Compounds — Full ADMET and Scoring Details
 
-Composite score = 0.40 × pIC50_norm + 0.30 × QSAR_Prob + 0.20 × LBVS_Tanimoto + 0.10 × QED. All IC50 values are experimentally measured (ChEMBL1849); ADMET descriptors computed with RDKit 2024.
+Composite score = 0.40 × pIC50_norm + 0.30 × QSAR_Prob + 0.20 × LBVS_Tanimoto + 0.10 × QED. All IC50 values are experimentally measured (ChEMBL1849); ADMET descriptors computed with RDKit 2024.03.
 
 | Rank | ChEMBL ID | IC50 (nM) | MW | LogP | TPSA | HBD | HBA | QED | hERG Risk | GI Abs. | Composite Score |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
@@ -52,7 +53,7 @@ Composite score = 0.40 × pIC50_norm + 0.30 × QSAR_Prob + 0.20 × LBVS_Tanimoto
 | 9 | CHEMBL3125101 | 2 | 569.43 | 1.76 | 138.93 | 3 | 7 | 0.275 | Low | Yes | 0.8006 |
 | 10 | CHEMBL3125261 | 3 | 540.58 | 3.20 | 135.50 | 2 | 7 | 0.324 | Low | Yes | 0.7913 |
 
-ADMET method: RDKit 2024 Descriptors, QED (rdkit.Chem.QED), rdMolDescriptors; hERG structural alert per Waring 2010 (Expert Opin Drug Metab Toxicol); GI absorption proxy per Lipinski 2001 (Adv Drug Deliv Rev); BBB proxy per Clark 1999 (J Pharm Sci).
+ADMET method: RDKit 2024.03 Descriptors, QED (rdkit.Chem.QED), rdMolDescriptors; hERG structural alert per Waring 2010 (Expert Opin Drug Metab Toxicol); GI absorption proxy per Lipinski 2001 (Adv Drug Deliv Rev); BBB proxy per Clark 1999 (J Pharm Sci).
 
 ## S4. Lead Compound Profile — CHEMBL3125270
 
@@ -61,14 +62,14 @@ ADMET method: RDKit 2024 Descriptors, QED (rdkit.Chem.QED), rdMolDescriptors; hE
 | ChEMBL ID | CHEMBL3125270 | ChEMBL1849 |
 | SMILES | CCc1cc(C(=O)N[C@@H]2C[C@@H](C(N)=O)N(C(=O)c3coc4ccccc34)C2)n(CC)n1 | ChEMBL |
 | Measured IC50 | 4 nM (InhA biochemical assay) | ChEMBL1849 |
-| Molecular weight | 423.47 Da | RDKit 2024 |
-| cLogP | 1.71 | RDKit 2024 |
-| TPSA | 123.46 A^2 | RDKit 2024 |
-| HBD / HBA | 2 / 5 | RDKit 2024 |
-| Rotatable bonds | 6 | RDKit 2024 |
-| QED | 0.625 | RDKit 2024 |
-| Lipinski compliance | Pass (all 4 rules) | RDKit 2024 |
-| Veber compliance | Pass (RotBonds 6, TPSA 123) | RDKit 2024 |
+| Molecular weight | 423.47 Da | RDKit 2024.03 |
+| cLogP | 1.71 | RDKit 2024.03 |
+| TPSA | 123.46 A^2 | RDKit 2024.03 |
+| HBD / HBA | 2 / 5 | RDKit 2024.03 |
+| Rotatable bonds | 6 | RDKit 2024.03 |
+| QED | 0.625 | RDKit 2024.03 |
+| Lipinski compliance | Pass (all 4 rules) | RDKit 2024.03 |
+| Veber compliance | Pass (RotBonds 6, TPSA 123) | RDKit 2024.03 |
 | hERG structural alert | Low risk | Waring 2010 criterion |
 | GI absorption (proxy) | Predicted absorbed | Lipinski 2001 criterion |
 | BBB penetration (proxy) | Not predicted | Clark 1999 criterion (TPSA > 90) |
@@ -79,11 +80,11 @@ Note: All properties are computationally predicted from structure. No experiment
 
 ## S5. Resistance Mutation Frequencies (CRyPTIC Consortium, 2022)
 
-Mutation frequencies from the CRyPTIC Consortium clinical genome sequencing study (n=16,000 isolates worldwide, PLoS Biol 2022).
+Mutation frequencies from the CRyPTIC Consortium clinical genome sequencing study (n=12,289 isolates worldwide, PLoS Biol 2022).
 
 | Gene | Mutation | Drug affected | Frequency in MDR strains | Confidence |
 | :--- | :--- | :--- | :--- | :--- |
-| katG | S315T | Isoniazid (high-level) | 0.68 | High |
+| katG | S315T | Isoniazid (high-level) | 0.67 | High |
 | inhA promoter | C-15T | Isoniazid (low-level) | 0.25 | High |
 | rpoB | S450L | Rifampicin | 0.42 | High |
 | gyrA | D94G | Fluoroquinolones | 0.30 | High |
@@ -133,7 +134,7 @@ Sources: World Health Organization (2023). Global Tuberculosis Report 2023. Gene
 | Component | Version/Details |
 | :--- | :--- |
 | Python | 3.14 |
-| RDKit | 2024.03 |
+| RDKit | 2024.03.6 |
 | scikit-learn | 1.4+ |
 | chembl-webresource-client | 0.10.9 |
 | matplotlib | 3.8+ |
@@ -147,6 +148,8 @@ No molecular docking (AutoDock Vina requires Boost C++ library unavailable on th
 
 ## S9. Data Availability
 
-All scripts, real ChEMBL bioactivity data, RDKit-computed ADMET results, QSAR model outputs, and figure generation code are available in the project repository. The ChEMBL bioactivity data (CHEMBL1849) can be independently retrieved at: https://www.ebi.ac.uk/chembl/target_report_card/CHEMBL1849/
+All scripts, real ChEMBL bioactivity data, RDKit-computed ADMET results, QSAR model outputs, and figure generation code are openly available at: **https://github.com/hssling/MDR-TB-Drug-Discovery**
 
-Crystal structure PDB 4TZK (InhA with NAD+ cofactor, 1.65 A resolution) was downloaded from the RCSB Protein Data Bank (https://www.rcsb.org/structure/4TZK).
+The ChEMBL bioactivity data (CHEMBL1849) can be independently retrieved at: https://www.ebi.ac.uk/chembl/target_report_card/CHEMBL1849/
+
+Crystal structure PDB 4TZK (InhA with NAD+ cofactor, 1.65 Å resolution) was downloaded from the RCSB Protein Data Bank: https://www.rcsb.org/structure/4TZK

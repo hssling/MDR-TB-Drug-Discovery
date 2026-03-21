@@ -1,34 +1,45 @@
-# Ligand-Based Virtual Screening Against *Mycobacterium tuberculosis* InhA Using Real ChEMBL Bioactivity Data: A Resistance-Aware Computational Prioritization Study
+# Ligand-Based Virtual Screening of *Mycobacterium tuberculosis* InhA Inhibitors Using Real ChEMBL Bioactivity Data: A Resistance-Aware Computational Prioritization Study
 
 **Authors:** Dr Siddalingaiah H S
-**Affiliation:** Professor, Community Medicine, Shridevi Institute of Medical Sciences and Research Hospital, Tumkur
+**Affiliation:** Professor, Community Medicine, Shridevi Institute of Medical Sciences and Research Hospital, Tumkur, Karnataka, India
 **Correspondence:** hssling@yahoo.com | +91 8941087719
 **ORCID:** 0000-0002-4771-8285
-**Target Journal:** *Journal of Cheminformatics*
-**Article Type:** Research Article
-**Running Title:** Genuine LBVS for MDR-TB InhA inhibitors
+**Target Journal:** *Tuberculosis* (Elsevier, ISSN 1472-9792)
+**Article Type:** Original Article
+**Running Title:** LBVS of MTB InhA inhibitors using ChEMBL data
+**Word count (main text, excl. abstract/refs/tables):** ~3,800 words
+
+---
+
+## Highlights
+
+- 277 real ChEMBL InhA IC50 values used; no synthetic or imputed data at any stage
+- ECFP4 QSAR models achieve test ROC-AUC 0.961 (Logistic Regression)
+- CHEMBL3125270 (IC50 4 nM) identified as top-priority direct InhA inhibitor
+- Drug-like profile: MW 423 Da, cLogP 1.71, Lipinski/Veber-compliant, low hERG risk
+- *katG* S315T leaves InhA intact; direct inhibitors retain activity against MDR-TB
 
 ---
 
 ## Abstract
 
-**Background:** Multidrug-resistant tuberculosis (MDR-TB) remains a critical global health emergency, with India accounting for 27% of the global TB burden and approximately 119,000 estimated MDR-TB cases in 2022 alone. InhA (enoyl-acyl carrier protein reductase), the primary target of isoniazid, is the most druggable and clinically validated target in the MDR-TB target landscape. The persistent failure of isoniazid in MDR-TB — driven predominantly by *katG* mutations that abolish prodrug activation — motivates the discovery of direct InhA inhibitors that bypass *katG* activation.
+**Background:** Multidrug-resistant tuberculosis (MDR-TB) remains a critical public health emergency; India alone carries ~119,000 estimated MDR-TB cases annually. InhA (enoyl-acyl carrier protein reductase, Rv1484), the enzymatic target of isoniazid, is the most clinically validated target in MDR-TB. The dominant resistance mechanism — *katG* mutation abolishing isoniazid prodrug activation — leaves InhA structurally intact, motivating the discovery of direct InhA inhibitors.
 
-**Methods:** We assembled a curated dataset of 277 InhA inhibitors with measured IC50 values from ChEMBL (target ID CHEMBL1849), applying drug-likeness filters (MW 200–600 Da, clogP < 5, parseable SMILES). We trained three binary classifiers — Random Forest, Gradient Boosting, and Logistic Regression — on Morgan ECFP4 fingerprints (radius=2, 2048 bits), using a stratified 80/20 train-test split with 5-fold cross-validation. Activity was defined as IC50 < 1,000 nM. All physicochemical and ADMET descriptors were computed with RDKit. Compounds were ranked by a composite score integrating normalized pIC50, QSAR predicted-active probability, ligand-based virtual screening (LBVS) Tanimoto similarity to five known InhA inhibitor scaffolds, and QED drug-likeness.
+**Methods:** We assembled 277 InhA inhibitors with experimentally measured IC50 values from ChEMBL (target CHEMBL1849), applied drug-likeness filters, and trained three binary classifiers (Random Forest, Gradient Boosting, Logistic Regression) on Morgan ECFP4 fingerprints (radius=2, 2,048 bits) with stratified 80/20 split and 5-fold cross-validation (activity threshold IC50 < 1,000 nM). All physicochemical and ADMET descriptors were computed with RDKit. Compounds were ranked by a composite score incorporating normalized pIC50, QSAR predicted-active probability, Tanimoto ligand-based virtual screening (LBVS) similarity to five established InhA scaffolds, and quantitative drug-likeness (QED).
 
-**Results:** The final dataset comprised 277 compounds (108 active, 169 inactive). All three classifiers achieved cross-validated ROC-AUC > 0.89. The best test-set performance was obtained by Logistic Regression (ROC-AUC 0.961, F1 0.821, accuracy 0.875) with ECFP4 fingerprints. The top-ranked compound, CHEMBL3125270, carries a measured InhA IC50 of 4 nM from a published biochemical assay (CHEMBL assay CHEMBL3132000) and displays a drug-like ADMET profile: MW 423.47 Da, clogP 1.71, TPSA 123.46 Ų, HBD 2, HBA 5, QED 0.625, and Lipinski-compliant. It belongs to a pyrazole-benzofuran-pyrrolidine chemotype with established InhA structure-activity relationships in the literature.
+**Results:** All three classifiers achieved cross-validated ROC-AUC > 0.89. Logistic Regression achieved the best test-set performance (ROC-AUC 0.961, F1 0.821, accuracy 0.875). The top-ranked compound, CHEMBL3125270 (pyrazole-benzofuran-pyrrolidine chemotype), carries a directly measured InhA IC50 of 4 nM and a drug-like ADMET profile: MW 423 Da, cLogP 1.71, TPSA 123 Å², HBD 2, HBA 5, QED 0.625, Lipinski- and Veber-compliant, low hERG structural alert risk.
 
-**Conclusions:** This study demonstrates a reproducible, genuine resistance-aware LBVS workflow for MDR-TB InhA prioritization grounded entirely in real published bioactivity data. CHEMBL3125270 and the surrounding pyrazole-benzofuran series represent well-characterized, potent InhA inhibitors warranting further prospective evaluation. All analysis code and output artefacts are openly available.
+**Conclusions:** This reproducible resistance-aware LBVS workflow, grounded entirely in published bioactivity data, identifies CHEMBL3125270 as the highest-priority computationally prioritized direct InhA lead. The pyrazole-benzofuran series warrants prospective experimental evaluation including whole-cell MIC testing against isoniazid-resistant *M. tuberculosis*. All analysis scripts and output artefacts are openly available.
 
-**Keywords:** MDR-TB, *Mycobacterium tuberculosis*, InhA, enoyl-ACP reductase, QSAR, ligand-based virtual screening, ChEMBL, machine learning, ADMET, drug discovery
+**Keywords:** MDR-TB; InhA; enoyl-ACP reductase; QSAR; ligand-based virtual screening; ChEMBL
 
 ---
 
 ## 1. Introduction
 
-Tuberculosis (TB) remains one of the foremost infectious disease burdens globally, causing an estimated 7.5 million new cases and 1.3 million deaths in 2022 [1]. India is the single largest contributor, accounting for 27% of global incidence (212 cases per 100,000 population, approximately 2.8 million total), with an estimated 119,000 MDR-TB cases in 2022, of whom only 66,432 were officially notified [1]. The treatment success rate for MDR-TB in India for the 2019 cohort remains 59%, far below the WHO target of 75%, underscoring the urgent need for new therapeutic options [1, 2].
+Tuberculosis (TB) remains one of the foremost infectious disease burdens globally, causing an estimated 7.8 million new cases and 1.13 million deaths in 2022 [1]. India is the single largest contributor, accounting for 27% of global incidence (212 cases per 100,000 population, approximately 2.8 million total), with an estimated 119,000 MDR-TB cases in 2022, of whom only 66,432 were officially notified [1]. The treatment success rate for MDR-TB in India for the 2019 cohort remains 59%, far below the WHO target of 75%, underscoring the urgent need for new therapeutic options [1, 2].
 
-MDR-TB is defined by resistance to at least rifampicin and isoniazid, the two most potent first-line agents [1]. Isoniazid resistance is predominantly mediated by mutations in *katG* — which encodes the catalase-peroxidase enzyme responsible for converting isoniazid into its active acyl-NADH adduct — and to a lesser extent by mutations in the *inhA* promoter region [3, 4]. The CRyPTIC consortium (n ≈ 16,000 isolates) reported *katG* S315T in approximately 58% of isoniazid-resistant isolates and *inhA* promoter mutations in approximately 20% [5]. These mutations leave InhA itself — the actual enzymatic target of the isoniazid-NAD adduct — largely intact and fully functional, making it an ideal target for direct inhibitors that bypass *katG* activation entirely [6].
+MDR-TB is defined by resistance to at least rifampicin and isoniazid, the two most potent first-line agents [1]. Isoniazid resistance is predominantly mediated by mutations in *katG* — which encodes the catalase-peroxidase enzyme responsible for converting isoniazid into its active acyl-NADH adduct — and to a lesser extent by mutations in the *inhA* promoter region [3, 4]. The CRyPTIC consortium (n = 12,289 isolates) reported *katG* S315T in approximately 67% of isoniazid-resistant isolates and *inhA* promoter mutations in approximately 20% [5]. These mutations leave InhA itself — the actual enzymatic target of the isoniazid-NAD adduct — largely intact and fully functional, making it an ideal target for direct inhibitors that bypass *katG* activation entirely [6].
 
 InhA (enoyl-acyl carrier protein reductase; *M. tuberculosis* Rv1484) catalyzes the final reduction step in the fatty acid elongation cycle of mycolic acid biosynthesis [7, 8]. Mycolic acids are essential constituents of the mycobacterial cell wall, and their disruption is bactericidal [7]. InhA has been biochemically and structurally characterized in extensive detail: high-resolution crystal structures are publicly available (PDB 4TZK, 1.65 Å), and the binding requirements for potent inhibitors are well understood [9, 10]. The active site accommodates NAD+ as an obligatory cofactor, and direct InhA inhibitors must displace or compete with the natural substrate within the NADH-binding pocket [10]. Published direct inhibitors — including triclosan, diphenyl ethers, 2-pyridone amides (PT70), and benzofuran-based series — demonstrate that potent nanomolar activity is achievable [11, 12].
 
@@ -64,7 +75,7 @@ Each component was scored 0–1 based on published evidence: druggability from s
 
 ### 2.4 ChEMBL dataset assembly
 
-Compounds with measured InhA IC50 values were retrieved via the ChEMBL web API (chembl-webresource-client v0.10.9) for target CHEMBL1849 (*M. tuberculosis* enoyl-[acyl-carrier-protein] reductase [NADH], InhA). Filters applied: standard type = IC50, standard relation = '=', standard units = nM, standard value ≥ 1 nM. SMILES were parsed with RDKit 2025.9.6; unparseable structures were excluded. Drug-likeness prefilters: MW 200–600 Da, clogP < 5.5. After deduplication by canonical SMILES, the final dataset contained **277 compounds** (108 active at IC50 < 1,000 nM; 169 inactive). The IC50 threshold of 1,000 nM was selected as a conventional binary classification boundary consistent with the ChEMBL bioactivity classification scheme.
+Compounds with measured InhA IC50 values were retrieved via the ChEMBL web API (chembl-webresource-client v0.10.9) for target CHEMBL1849 (*M. tuberculosis* enoyl-[acyl-carrier-protein] reductase [NADH], InhA). Filters applied: standard type = IC50, standard relation = '=', standard units = nM, standard value ≥ 1 nM. SMILES were parsed with RDKit 2024.03; unparseable structures were excluded. Drug-likeness prefilters: MW 200–600 Da, clogP < 5.5. After deduplication by canonical SMILES, the final dataset contained **277 compounds** (108 active at IC50 < 1,000 nM; 169 inactive). The IC50 threshold of 1,000 nM was selected as a conventional binary classification boundary consistent with the ChEMBL bioactivity classification scheme.
 
 ### 2.5 Molecular fingerprints
 
@@ -82,7 +93,7 @@ Data were split using stratified 80/20 holdout (train n=221, test n=56). Perform
 
 ### 2.7 ADMET computation
 
-All physicochemical and ADMET descriptors were computed using RDKit 2025.9.6 [18]:
+All physicochemical and ADMET descriptors were computed using RDKit 2024.03 [18]:
 
 - **MW, clogP, TPSA, HBD, HBA, RotBonds, Rings, AromaticRings, FractionCSP3:** `rdkit.Chem.Descriptors`
 - **QED:** `rdkit.Chem.QED.qed`
@@ -137,7 +148,7 @@ India's TB burden justifies continued investment in novel anti-tubercular agents
 
 *Figure 3. Estimated MDR-TB notification rates across ten Indian states, derived from WHO 2023 and India TB Report 2023 published state-level data.*
 
-Resistance gene analysis based on the CRyPTIC consortium data (n ≈ 16,000 isolates) identified *rpoB* mutations in 96% of rifampicin-resistant isolates (S450L, formerly S531L, in 61% of RIF-R isolates), *katG* S315T in 58% of isoniazid-resistant isolates (total *katG* mutation frequency 65%), and *inhA* promoter mutations in approximately 20% of isoniazid-resistant isolates [5]. The co-occurrence of *katG* and *rpoB* mutations defines the classical MDR-TB genotype. Crucially, *katG* mutations abolish isoniazid prodrug activation while leaving InhA enzymatically intact — making direct InhA inhibitors pharmacologically active against the dominant isoniazid-resistance mechanism [6].
+Resistance gene analysis based on the CRyPTIC consortium data (n = 12,289 isolates) identified *rpoB* mutations in 96% of rifampicin-resistant isolates (S450L, formerly S531L, in 61% of RIF-R isolates), *katG* S315T in approximately 67% of isoniazid-resistant isolates (total *katG* mutation frequency 68%), and *inhA* promoter mutations in approximately 20% of isoniazid-resistant isolates [5]. The co-occurrence of *katG* and *rpoB* mutations defines the classical MDR-TB genotype. Crucially, *katG* mutations abolish isoniazid prodrug activation while leaving InhA enzymatically intact — making direct InhA inhibitors pharmacologically active against the dominant isoniazid-resistance mechanism [6].
 
 ### 3.2 Target prioritization
 
@@ -206,9 +217,9 @@ The top compound, **CHEMBL3125270**, carries a directly measured InhA IC50 of 4 
 
 The ADMET profile of CHEMBL3125270 is drug-like: MW 423 Da is well within Lipinski limits; clogP 1.71 is low, predicting good aqueous solubility; TPSA 123 Ų is within the GI absorption threshold (< 140 Ų) but above the BBB threshold (> 90 Ų), correctly predicting non-CNS exposure for an anti-infective target; HBD 2 and HBA 5 are within Lipinski limits and sufficient for productive hydrogen bonding; QED 0.625 indicates a drug-like molecule by quantitative drug-likeness metrics; and hERG flagging is low (clogP < 4). Veber rules (RotBonds ≤ 10, TPSA ≤ 140 Ų) are satisfied.
 
-![Figure 5. Top docking hits against InhA](../figures/figure_5_docking_hits.png)
+![Figure 5. Top-ranked InhA inhibitors by composite LBVS score](../figures/figure_5_docking_hits.png)
 
-*Figure 5. Composite scores for the top 10 ranked InhA inhibitors from the ChEMBL LBVS screening campaign. Compound labels are ChEMBL IDs; all IC50 values are from published biochemical assays.*
+*Figure 5. Composite scores for the top 10 ranked InhA inhibitors from the ChEMBL LBVS ranking. Compound labels are ChEMBL IDs; all IC50 values are from published biochemical assays. No molecular docking was performed; scores reflect pIC50, QSAR probability, Tanimoto LBVS similarity, and QED.*
 
 ![Figure 6. Top valid molecular structures](../figures/figure_6_top_structures.png)
 
@@ -282,21 +293,21 @@ The workflow is fully reproducible from the provided open scripts and output art
 
 ## Declarations
 
-**Ethics approval and consent to participate:** Not applicable. No human participants, animals, or biological experiments were involved.
+**Ethics approval:** Not applicable. This study is entirely computational and used only publicly available, de-identified data. No human participants, human-derived biological materials, animals, or biological experiments were involved. No patient data, clinical samples, or personal identifiers were used at any stage. The study does not require ethical approval under the Declaration of Helsinki.
 
 **Consent for publication:** Not applicable.
 
-**Availability of data and materials:** ChEMBL bioactivity data are publicly available at https://www.ebi.ac.uk/chembl/ (target CHEMBL1849). All computed descriptors, QSAR outputs, ranked compound tables, and scripts are available in the project repository. InhA structure PDB 4TZK is available at https://www.rcsb.org. No proprietary or simulated data were used.
+**Declaration of competing interests:** The author declares that he has no known competing financial interests or personal relationships that could have appeared to influence the work reported in this paper.
 
-**Code availability:** All pipeline code is available in `scripts/genuine_drug_discovery.py` within the project repository.
+**Funding:** This research received no specific grant from any funding agency in the public, commercial, or not-for-profit sectors.
 
-**Competing interests:** The author declares no competing interests.
+**CRediT authorship contribution statement:** **Siddalingaiah H S:** Conceptualization, Methodology, Software, Formal analysis, Data curation, Writing – original draft, Writing – review & editing, Visualization.
 
-**Funding:** No external funding was received for this study.
+**Data availability:** The ChEMBL bioactivity dataset (target CHEMBL1849) is publicly available at https://www.ebi.ac.uk/chembl/target_report_card/CHEMBL1849/. The InhA crystal structure PDB 4TZK is available at https://www.rcsb.org/structure/4TZK. All computed ADMET descriptors, QSAR model outputs, ranked compound tables, and figure generation code generated during this study are openly available at https://github.com/hssling/MDR-TB-Drug-Discovery. No proprietary or simulated data were used at any stage.
 
-**Authors' contributions:** Dr Siddalingaiah H S conceived the study, implemented and validated the computational pipeline, interpreted the results, and wrote and approved the final manuscript.
+**Code availability:** All analysis scripts are available at https://github.com/hssling/MDR-TB-Drug-Discovery (see `scripts/genuine_drug_discovery.py`). The repository includes all output artefacts, figures, and the full manuscript source.
 
-**Acknowledgements:** This study used ChEMBL (EMBL-EBI, Cambridge UK), RDKit (open-source cheminformatics), scikit-learn, and RCSB PDB. The CRyPTIC consortium is acknowledged for making resistance data publicly available.
+**Acknowledgements:** The author acknowledges the EMBL-EBI ChEMBL team (Cambridge, UK) for maintaining the publicly accessible bioactivity database; the RDKit open-source cheminformatics community; the scikit-learn development team; and the RCSB Protein Data Bank. The CRyPTIC consortium is acknowledged for making global resistance genotype data publicly available.
 
 ---
 
