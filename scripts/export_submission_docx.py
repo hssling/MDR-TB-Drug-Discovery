@@ -195,9 +195,9 @@ def main() -> None:
     manuscript_title = strip_markdown(manuscript_md.read_text(encoding="utf-8").splitlines()[0].lstrip("# ").strip())
 
     # Use _v9 suffix to avoid overwriting any file open in Word
-    markdown_to_docx(manuscript_md, output_dir / "submission_manuscript_v9.docx", manuscript_title)
-    markdown_to_docx(supplementary_md, output_dir / "submission_supplementary_v9.docx", "Supplementary Materials")
-    create_cover_letter(output_dir / "submission_cover_letter_v9.docx", manuscript_title)
+    markdown_to_docx(manuscript_md, output_dir / "submission_manuscript_v10.docx", manuscript_title)
+    markdown_to_docx(supplementary_md, output_dir / "submission_supplementary_v10.docx", "Supplementary Materials")
+    create_cover_letter(output_dir / "submission_cover_letter_v10.docx", manuscript_title)
 
     print(f"Generated DOCX assets in: {output_dir}")
 
