@@ -1,9 +1,32 @@
 {
-  "title": "MDR-TB Drug Discovery AI Pipeline",
+  "title": "MDR-TB Drug Discovery AI Pipeline with Claude Agent",
   "id": "jkhospital/mdrtb-drug-discovery-ai-pipeline",
   "licenses": [
     {
       "name": "CC0-1.0"
+    }
+  ],
+  "keywords": [
+    "tuberculosis",
+    "drug-discovery",
+    "ai-agent",
+    "cheminformatics",
+    "mcp",
+    "qsar",
+    "admet",
+    "chembl",
+    "rdkit",
+    "anthropic"
+  ],
+  "description": "End-to-end AI-powered drug discovery pipeline for MDR-TB and any disease. Includes a Claude-orchestrated agent with 12 real-data tools (ChEMBL, PubChem, PDB, EuropePMC, RDKit ADMET/QSAR), guardrails against fabricated data, MCP server for Claude Desktop integration, and LBVS-based compound ranking. Companion to peer-reviewed manuscript submitted to Tuberculosis (Elsevier).",
+  "resources": [
+    {
+      "path": "outputs/manuscript/manuscript_v8_genuine.md",
+      "description": "Peer-reviewed manuscript draft — InhA LBVS study"
+    },
+    {
+      "path": "outputs/lbvs/lbvs_results.csv",
+      "description": "ChEMBL InhA bioactivity + ADMET + composite ranking results"
     }
   ]
 }
