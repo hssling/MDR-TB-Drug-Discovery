@@ -25,7 +25,7 @@
       "description": "Peer-reviewed manuscript draft — InhA LBVS study"
     },
     {
-      "path": "outputs/lbvs/lbvs_results.csv",
+      "path": "outputs/ranking/ranked_compounds.csv",
       "description": "ChEMBL InhA bioactivity + ADMET + composite ranking results"
     }
   ]
